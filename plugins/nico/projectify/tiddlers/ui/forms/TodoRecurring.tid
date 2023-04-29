@@ -6,4 +6,14 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
-{{$:/plugins/nico/projectify/images/entypo/cycle}} <<lingo Every>> X  unit of time (todo lingo + macro unit)
+
+<<lingo Every>> X
+
+<$select  default='HelloThere' field='recurring.unit'>
+  <$list filter='days weeks months years'>
+    <option value=<<currentTiddler>>>
+      <$view field='title'/>
+    </option>
+  </$list>
+</$select>
+

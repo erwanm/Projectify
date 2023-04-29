@@ -15,15 +15,20 @@ type: text/vnd.tiddlywiki
   <$action-listops $tiddler={{$:/temp/projectify/new-todo}} $tags=<<todo-tags>>/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} due={{{ [<stateTiddler>get[due]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} priority={{{ [<stateTiddler>get[priority]] }}}/>
+  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} priority={{{ [<stateTiddler>get[recurring.unit]] }}}/>
+  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} priority={{{ [<stateTiddler>get[recurring.n]] }}}/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="todo-name"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="due"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="priority"/>
+  <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.unit"/>
+  <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.n"/>
 
   <$action-sendmessage $message="tm-auto-save-wiki"/>
 </$list>
 \end
 
 <$vars stateTiddler=<<qualify "$:/temp/projectify/add-todo-form">>>
+  ERW <<stateTiddler>>
   <div class="py-composite-input">
     <$keyboard key="enter">
     <<add-todo-actions>>
@@ -38,6 +43,7 @@ type: text/vnd.tiddlywiki
     <div class="py-todo-actions">
       <$vars currentTiddler=<<stateTiddler>>>
 	<$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoDueDate" mode="inline"/>
+	<$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoRecurring" mode="inline"/>
 	<$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
       </$vars>
     </div>

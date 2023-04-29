@@ -1,0 +1,21 @@
+created: 20230429135048294
+modified: 20230429180542060
+tags:
+title: $:/plugins/nico/projectify/ui/buttons/TodoRecurring
+type: text/vnd.tiddlywiki
+
+<$vars
+  popupTiddler=<<qualify "$:/state/projectify/todo-recurring-dropdown">>
+>
+  <$button class="py-btn py-due-date" popup=<<popupTiddler>>>
+    {{$:/plugins/nico/projectify/images/entypo/cycle}}
+  </$button>
+
+  <$reveal state=<<popupTiddler>> type="popup" position="belowleft" animate="no">
+    <div class="tc-drop-down py-drop-down tc-popup-keep">
+      {{||$:/plugins/nico/projectify/ui/forms/TodoRecurring}}
+    </div>
+  </$reveal>
+</$vars>
+
+
