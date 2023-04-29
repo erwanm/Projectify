@@ -1,0 +1,9 @@
+created: 20230429175047050
+modified:20230429182234031
+tags:
+title: $:/plugins/nico/projectify/ui/forms/TodoRecurring
+type: text/vnd.tiddlywiki
+
+\define lingo-base() $:/language/projectify/
+
+{{$:/plugins/nico/projectify/images/entypo/cycle}} <<lingo Every>> X  unit of time (todo lingo + macro unit)

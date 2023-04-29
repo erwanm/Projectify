@@ -10,6 +10,5 @@ type: text/vnd.tiddlywiki
 <$py-date-tomorrow>{{$:/plugins/nico/projectify/images/calendar-event}} <<lingo Tomorrow>></$py-date-tomorrow>
 <$py-date-next-week>{{$:/plugins/nico/projectify/images/calendar}} <<lingo NextWeek>></$py-date-next-week>
 <$py-date-clear>{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>
-somecode? {{$:/plugins/nico/projectify/images/entypo/cycle}} Recurring event endsomecode
 <hr/>
 <$py-date-calendar/>
