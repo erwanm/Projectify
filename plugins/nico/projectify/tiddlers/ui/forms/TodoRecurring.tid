@@ -7,13 +7,22 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 
-<<lingo Every>> X
+<<lingo Every>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
 
-<$select  default='HelloThere' field='recurring.unit'>
+<$select  default='days' field='recurring.unit'>
   <$list filter='days weeks months years'>
     <option value=<<currentTiddler>>>
-      <$view field='title'/>
+    <$macrocall $name="lingo" title=<<currentTiddler>> />
     </option>
   </$list>
 </$select>
+
+<$button class="py-btn">
+  action-TODO
+  {{$:/plugins/nico/projectify/images/checkbox-checked}} OK
+</$button>
+<$button class="py-btn">
+  <$action-deletefield recurring.n recurring.unit/>
+  {{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>>
+</$button>
 

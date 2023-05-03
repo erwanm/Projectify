@@ -274,6 +274,14 @@ type: text/vnd.tiddlywiki
   color: #24cd5e;
 }
 
+.py-recurring-active {
+  fill: #24cd5e;
+  color: #24cd5e;
+}
+
+.py-recurring-inactive {
+}
+
 .py-project-category-manager-table {
   width: 100%;
 }
