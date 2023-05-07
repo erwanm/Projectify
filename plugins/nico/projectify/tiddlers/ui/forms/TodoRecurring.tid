@@ -6,6 +6,8 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
+    
+
 
 <<lingo Every>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
 
@@ -18,7 +20,10 @@ type: text/vnd.tiddlywiki
 </$select>
 
 <$button class="py-btn">
-  action-TODO
+  <$list filter="[all[current]!has[recurring.n]]">
+    <$action-setfield recurring.n="1" recurring.unit="days" />
+  </$list>
+  <$action-deletetiddler $tiddler=<<popupTiddler>>/>
   {{$:/plugins/nico/projectify/images/checkbox-checked}} OK
 </$button>
 <$button class="py-btn">
