@@ -8,8 +8,7 @@ type: text/vnd.tiddlywiki
   popupTiddler=<<qualify "$:/state/projectify/todo-recurring-dropdown">>
 >
 
-  <$set name="cssClass" filter="[all[current]has[recurring.n]then[py-btn py-recurring-active]else[py-btn py-recurring-inactive]]">
-    <<cssClass>>
+  <$vars cssClass={{{ [all[current]has[recurring.n]then[py-btn py-recurring-active]else[py-btn py-recurring-inactive]] }}}>
     <$button class=<<cssClass>> popup=<<popupTiddler>>>
       {{$:/plugins/nico/projectify/images/entypo/cycle}}
     </$button>
@@ -19,7 +18,7 @@ type: text/vnd.tiddlywiki
         {{||$:/plugins/nico/projectify/ui/forms/TodoRecurring}}
       </div>
     </$reveal>
-  </$set>
+  </$vars>
 </$vars>
 
 
