@@ -10,24 +10,27 @@ type: text/vnd.tiddlywiki
 
 
 <<lingo Every>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
-
 <$select  default='days' field='recurring.unit'>
-  <$list filter='days weeks months years'>
+  <$list filter="days weeks months years">
     <option value=<<currentTiddler>>>
     <$macrocall $name="lingo" title=<<currentTiddler>> />
     </option>
   </$list>
 </$select>
 
-<$button class="py-btn">
+<hr/>
+
+<$button class="tc-btn-invisible py-btn-recurring-clear">
+  <$action-deletefield recurring.n recurring.unit/>
+  <$action-sendmessage $message="tm-auto-save-wiki"/>
+  {{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>>
+</$button>
+
+<$button class="tc-btn-invisible py-btn-recurring-ok">
   <$list filter="[all[current]!has[recurring.n]]">
     <$action-setfield recurring.n="1" recurring.unit="days" />
   </$list>
   <$action-deletetiddler $tiddler=<<popupTiddler>>/>
-  {{$:/plugins/nico/projectify/images/checkbox-checked}} OK
-</$button>
-<$button class="py-btn">
-  <$action-deletefield recurring.n recurring.unit/>
-  {{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>>
+  <$action-sendmessage $message="tm-auto-save-wiki"/>{{$:/plugins/nico/projectify/images/dripicons/checkmark}}  OK
 </$button>
 

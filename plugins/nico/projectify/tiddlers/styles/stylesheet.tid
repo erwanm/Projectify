@@ -276,10 +276,20 @@ type: text/vnd.tiddlywiki
 
 .py-recurring-active,  .py-recurring-active svg,  .py-btn.py-recurring-active {
   fill: #0000ff;
-  color: #24cd5e;
+  color: #0000ff;
 }
 
 .py-recurring-inactive,  .py-recurring-inactive svg, .py-btn.py-recurring-inactive {
+}
+
+.py-btn-recurring-ok,  .tc-drop-down .py-btn-recurring-ok, .tc-drop-down .py-btn-recurring-ok svg {
+ fill: <<colour primary>>;
+  color: <<colour primary>>;
+}
+
+.py-btn-recurring-clear, .tc-drop-down .py-btn-recurring-clear,  .tc-drop-down .py-btn-recurring-clear svg {
+ fill: #e73939;
+ color: #e73939;
 }
 
 .py-project-category-manager-table {
