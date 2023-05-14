@@ -1,5 +1,5 @@
 created: 20201130170640112
-modified: 20230514170321973
+modified: 20230514172734041
 tags: 
 title: Demo
 type: text/vnd.tiddlywiki
@@ -8,12 +8,23 @@ type: text/vnd.tiddlywiki
 !! Erwan's temporary notes
 
 * installed local TW prerelease 5.3, but will need to update various json files with correct versions.
+* issue starting Projectify with TW prerelease 5.3:
+** If I run `npm run serve` in the Projectify repo, wrong version: 5.2.7
+** If I run `tiddlywiki editions/tw5.com-server --listen` in the TiddlyWiki5 repo, correct version
+** If I run `tiddlywiki Projectify --listen` outside the Projectigy repo, the version is ok but the plugin is apparently inaccessible/disabled.
 * Eric's great idea: https://github.com/Jermolene/TiddlyWiki5/issues/7120
 * format documentation: https://tiddlywiki.com/prerelease/#format%20Operator
 
+Some tests:
+
+* basic use of `format`:
 {{{[all[current]get[created]format:date[DDth MMM YYYY]]}}}
 
+* using `timestamp` to calculate current date/time + one day
 {{{ [<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>format:date[TIMESTAMP]add[86400000]format:timestamp[DDth mmm YYYY 0hh:0mm:0ss]] }}}
+
+[[$:/plugins/nico/projectify/ui/dashboard/Dashboard]]
+
 
 ---
 
