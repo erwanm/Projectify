@@ -1,7 +1,21 @@
 created: 20201130170640112
-modified: 20201212170920863
+modified: 20230514170321973
 tags: 
 title: Demo
 type: text/vnd.tiddlywiki
+
+
+!! Erwan's temporary notes
+
+* installed local TW prerelease 5.3, but will need to update various json files with correct versions.
+* Eric's great idea: https://github.com/Jermolene/TiddlyWiki5/issues/7120
+* format documentation: https://tiddlywiki.com/prerelease/#format%20Operator
+
+{{{[all[current]get[created]format:date[DDth MMM YYYY]]}}}
+
+{{{ [<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>format:date[TIMESTAMP]add[86400000]format:timestamp[DDth mmm YYYY 0hh:0mm:0ss]] }}}
+
+---
+
 
 {{$:/plugins/nico/projectify/ui/dashboard/Dashboard}}
