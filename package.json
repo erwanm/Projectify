@@ -38,7 +38,7 @@
 	},
 	"homepage": "https://github.com/nicolaspetton/projectify#readme",
 	"dependencies": {
-		"tiddlywiki": "^5.1.23"
+		"tiddlywiki": "github:Jermolene/TiddlyWiki5"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.6",
