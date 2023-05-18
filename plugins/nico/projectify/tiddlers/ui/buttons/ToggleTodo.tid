@@ -9,6 +9,10 @@ type: text/vnd.tiddlywiki
 
 \define save-actions()
   <$action-sendmessage $message="tm-auto-save-wiki"/>
+  <$list filter="[all[current]tag[done]has[recurring.n]]">
+    <$action-createtiddler $basetitle={{!!title}} tags={{!!tags}} due="oops" priority={{!!priority}} recurring.n={{!!recurring.n}} recurring.unit={{!!recurring.unit}}/>
+    <$action-listops $tiddler={{!!title}} $field="tags" $subfilter="-done"/>
+  </$list>
 \end
 
 <$list filter=<<py-is-todo>>>
