@@ -23,6 +23,8 @@ type: text/vnd.tiddlywiki
       <hr/>
       {{||$:/plugins/nico/projectify/ui/forms/TodoDueDate}}
       <hr/>
+      {{||$:/plugins/nico/projectify/ui/forms/TodoRecurring}}
+      <hr/>
       {{||$:/plugins/nico/projectify/ui/forms/TodoConvert}}
     </div>
   </$reveal>
