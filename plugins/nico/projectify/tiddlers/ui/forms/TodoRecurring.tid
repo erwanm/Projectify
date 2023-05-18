@@ -27,7 +27,7 @@ type: text/vnd.tiddlywiki
 </$button>
 
 <$button class="tc-btn-invisible py-btn-recurring-ok">
-  <$list filter="[all[current]!has[recurring.n]]">
+  <$list filter="[all[current]!has[recurring.n]!has[recurring.unit]]">
     <$action-setfield recurring.n="1" recurring.unit="days" />
   </$list>
   <$action-deletetiddler $tiddler=<<popupTiddler>>/>
