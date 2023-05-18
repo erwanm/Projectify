@@ -1,5 +1,5 @@
 created: 20201130170640112
-modified: 20230517201526596
+modified: 20230518180126265
 tags: 
 title: Demo
 type: text/vnd.tiddlywiki
@@ -33,5 +33,14 @@ Some tests:
 
 ---
 
+TODO
+
+* add recurring button to indiv tiddler + maybe put colour in flag?
+* see about subtask
+* maybe rethink the recurring box because of the '...' button with everything together
+** also the button ok is misleading, gives the impression that the todo is added
+* add option to delete/cancel a todo?
+
+---
 
 {{$:/plugins/nico/projectify/ui/dashboard/Dashboard}}
