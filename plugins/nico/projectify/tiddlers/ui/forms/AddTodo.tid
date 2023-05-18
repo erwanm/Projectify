@@ -15,8 +15,8 @@ type: text/vnd.tiddlywiki
   <$action-listops $tiddler={{$:/temp/projectify/new-todo}} $tags=<<todo-tags>>/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} due={{{ [<stateTiddler>get[due]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} priority={{{ [<stateTiddler>get[priority]] }}}/>
-  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} priority={{{ [<stateTiddler>get[recurring.unit]] }}}/>
-  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} priority={{{ [<stateTiddler>get[recurring.n]] }}}/>
+  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.unit={{{ [<stateTiddler>get[recurring.unit]] }}}/>
+  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.n={{{ [<stateTiddler>get[recurring.n]] }}}/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="todo-name"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="due"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="priority"/>
