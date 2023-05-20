@@ -1,6 +1,6 @@
 caption: 
 created: 20201130170606065
-modified: 20201212170605436
+modified: 20230520150727130
 tags: $:/tags/GettingStarted
 title: GettingStarted
 type: text/vnd.tiddlywiki
@@ -8,3 +8,6 @@ type: text/vnd.tiddlywiki
 ~Projectify is a simple [[TiddlyWiki|https://tiddlywiki.com]] plugin for managing projects & todo lists, inspired by other tools such as [[Todoist|https://todoist.com]] and [[Basecamp|https://basecamp.com]].
 
 I started this project as an experiment to see how good ~TiddlyWiki could be as a Web Application Platform. It turns out to be an extremely good foundation for building SPAs.
+
+
+<<.add-days field:"created" ndays:3 >>

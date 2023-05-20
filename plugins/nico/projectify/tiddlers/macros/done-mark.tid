@@ -4,6 +4,18 @@ tags: $:/tags/Macro
 title: $:/plugins/nico/projectify/macros/done-mark
 type: text/vnd.tiddlywiki
 
+\procedure add-days(field:"due" n:"1")
+  <$let inseconds={{{ [<n>multiply[86400000]] }}}>
+{{{ [all[current]get<field>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+  </$let>
+\end
+
+\procedure add-weeks(field:"due" n:"1")
+  <$let inseconds={{{ [<n>multiply[604800000]] }}}>
+{{{ [all[current]get<field>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+  </$let>
+\end
+
 
 \define py-mark-as-done()
   <$action-sendmessage $message="tm-auto-save-wiki"/>
