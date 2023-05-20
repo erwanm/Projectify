@@ -22,7 +22,7 @@ type: text/vnd.tiddlywiki
     <<drag-handle>>
   </$list>
 
-  <$checkbox tag="done" actions=<<save-actions>>>
+  <$checkbox tag="done" checkactions=<<py-mark-as-done>> uncheckactions=<<py-unmark-as-done>>>
     {{||$:/plugins/nico/projectify/ui/buttons/Checkbox}}
     <$reveal type="nomatch" state="!!priority" text="">
       {{||$:/plugins/nico/projectify/ui/buttons/TodoPriority}}

@@ -1,0 +1,19 @@
+created: 20230520154610555
+modified: 20230512010344539
+tags: $:/tags/Macro
+title: $:/plugins/nico/projectify/macros/done-mark
+type: text/vnd.tiddlywiki
+
+
+\define py-mark-as-done()
+  <$action-sendmessage $message="tm-auto-save-wiki"/>
+  <$list filter="[all[current]has[recurring.n]]">
+    <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
+      <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
+    </$action-createtiddler>
+  </$list>
+\end
+
+\define py-unmark-as-done()
+  <$action-sendmessage $message="tm-auto-save-wiki"/>
+\end

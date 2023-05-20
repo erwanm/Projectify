@@ -7,19 +7,13 @@ description: Projectify -- Toggle the state of the current todo tiddler
 list-before: $:/core/ui/Buttons/close
 type: text/vnd.tiddlywiki
 
-\define save-actions()
-  <$action-sendmessage $message="tm-auto-save-wiki"/>
-  <$list filter="[all[current]tag[done]has[recurring.n]]">
-    <$action-createtiddler $basetitle={{!!title}} tags={{!!tags}} due="oops" priority={{!!priority}} recurring.n={{!!recurring.n}} recurring.unit={{!!recurring.unit}}/>
-    <$action-listops $tiddler={{!!title}} $field="tags" $subfilter="-done"/>
-  </$list>
-\end
 
 <$list filter=<<py-is-todo>>>
   <span class="py-toggle-todo-button">
-    <$checkbox tag="done" actions=<<save-actions>>>
+    <$checkbox tag="done" checkactions=<<py-mark-as-done>> uncheckactions=<<py-unmark-as-done>>>
       {{||$:/plugins/nico/projectify/ui/buttons/Checkbox}}
     </$checkbox>
   </span>
 </$list>
+
 
