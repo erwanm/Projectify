@@ -1,46 +1,8 @@
 created: 20201130170640112
-modified: 20230518180126265
+modified: 20230520101324340
 tags: 
 title: Demo
 type: text/vnd.tiddlywiki
 
-
-!! Erwan's temporary notes
-
-* installed local TW prerelease 5.3, but will need to update various json files with correct versions.
-* issue starting Projectify with TW prerelease 5.3:
-** If I run `npm run serve` in the Projectify repo, wrong version: 5.2.7
-** If I run `tiddlywiki editions/tw5.com-server --listen` in the TiddlyWiki5 repo, correct version
-** If I run `tiddlywiki Projectify --listen` outside the Projectigy repo, the version is ok but the plugin is apparently inaccessible/disabled.
-** solution here: https://talk.tiddlywiki.org/t/trying-to-modify-the-projectify-plugin-on-node-js-with-tw-5-3-0-prerelease/7021/2
-* Eric's great idea: https://github.com/Jermolene/TiddlyWiki5/issues/7120
-* format documentation: https://tiddlywiki.com/prerelease/#format%20Operator
-
-Some tests:
-
-* basic use of `format`:
-{{{[all[current]get[created]format:date[DDth MMM YYYY]]}}}
-
-* using `timestamp` to calculate current date/time + one day
-{{{ [<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>format:date[TIMESTAMP]add[86400000]format:timestamp[DDth mmm YYYY 0hh:0mm:0ss]] }}}
-
----
-
-* Changed `package.json` in order to run on TW prerelease [[as indicated by Brian|https://talk.tiddlywiki.org/t/trying-to-modify-the-projectify-plugin-on-node-js-with-tw-5-3-0-prerelease]]: 		`"tiddlywiki": "github:Jermolene/TiddlyWiki5"` in `dependencies`
-** this line will become `"tiddlywiki": "^5.3.0"` once TW 5.3.0 is released
-** should run `npm update` after changing
-* Will have to deal with version no for Projectify as well 
-
----
-
-TODO
-
-* add recurring button to indiv tiddler + maybe put colour in flag?
-* see about subtask
-* maybe rethink the recurring box because of the '...' button with everything together
-** also the button ok is misleading, gives the impression that the todo is added
-* add option to delete/cancel a todo?
-
----
 
 {{$:/plugins/nico/projectify/ui/dashboard/Dashboard}}
