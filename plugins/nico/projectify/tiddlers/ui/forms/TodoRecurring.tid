@@ -6,8 +6,6 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
-    
-
 
 <<lingo Every>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
 <$select  default='days' field='recurring.unit'>

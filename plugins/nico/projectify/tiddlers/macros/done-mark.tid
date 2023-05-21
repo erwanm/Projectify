@@ -5,17 +5,14 @@ title: $:/plugins/nico/projectify/macros/done-mark
 type: text/vnd.tiddlywiki
 
 \procedure add-days(field:"due" n:"1")
-<<n>> [<n>multiply[86400000]]
   <$let inseconds={{{ [<n>multiply[86400000]] }}}>
-<<inseconds>>
-
-{{{ [all[current]get<field>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+    {{{ [all[current]get<field>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
   </$let>
 \end
 
 \procedure add-weeks(field:"due" n:"1")
   <$let inseconds={{{ [<n>multiply[604800000]] }}}>
-{{{ [all[current]get<field>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+    {{{ [all[current]get<field>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
   </$let>
 \end
 
@@ -60,11 +57,13 @@ type: text/vnd.tiddlywiki
 
 \define py-mark-as-done()
   <$action-sendmessage $message="tm-auto-save-wiki"/>
-  <$list filter="[all[current]has[recurring.n]]">
-    <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
-      <$action-setfield $tiddler=<<createTiddler-title>> due=<<recurring-get-next-date>>/>
-      <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
-    </$action-createtiddler>
+  <$list filter="[all[current]has[recurring.enabled]]">
+    <$wikify name="nextdate" text="<<recurring-get-next-date>>">
+      <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
+        <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
+        <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
+      </$action-createtiddler>
+    </$wikify>
   </$list>
 \end
 

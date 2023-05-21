@@ -1,7 +1,7 @@
 caption: 
 created: 20201130170606065
 due: 20230520174028552
-modified: 20230520181342284
+modified: 20230521203425486
 recurring.n: 3
 recurring.unit: days
 tags: $:/tags/GettingStarted
@@ -12,11 +12,3 @@ type: text/vnd.tiddlywiki
 
 I started this project as an experiment to see how good ~TiddlyWiki could be as a Web Application Platform. It turns out to be an extremely good foundation for building SPAs.
 
----
-     <<add-days field:"due" n:3>>
-
-
-
-     <<add-days "due" {{!!recurring.n}}>>
-
-<<recurring-get-next-date>>
