@@ -44,18 +44,16 @@ type: text/vnd.tiddlywiki
 
 \procedure recurring-get-next-date()
   <$list filter="[all[current]field:recurring.unit[days]]">
-    DD {{!!recurring.n}}
-     <<add-days field:"due" n:{{!!recurring.n}}>>
+    <$transclude $variable=add-days n={{!!recurring.n}}/>
   </$list>
   <$list filter="[all[current]field:recurring.unit[weeks]]">
-    WW {{!!recurring.n}}
-     <<add-weeks field:"due" n:{{!!recurring.n}}>>
+    <$transclude $variable=add-weeks n={{!!recurring.n}}/>
   </$list>
   <$list filter="[all[current]field:recurring.unit[months]]">
-     <<add-months field:"due" n:{{!!recurring.n}}>>
+    <$transclude $variable=add-months n={{!!recurring.n}}/>
   </$list>
   <$list filter="[all[current]field:recurring.unit[years]]">
-     <<add-years field:"due" n:{{!!recurring.n}}>>
+    <$transclude $variable=add-years n={{!!recurring.n}}/>
   </$list>
 \end
 
