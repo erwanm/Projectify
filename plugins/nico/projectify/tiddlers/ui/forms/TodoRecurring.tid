@@ -18,19 +18,4 @@ type: text/vnd.tiddlywiki
   </$list>
 </$select>
 
-<hr/>
-
-<$button class="tc-btn-invisible py-btn-recurring-clear">
-  <$action-deletefield recurring.n recurring.unit/>
-  <$action-sendmessage $message="tm-auto-save-wiki"/>
-  {{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>>
-</$button>
-
-<$button class="tc-btn-invisible py-btn-recurring-ok">
-  <$list filter="[all[current]!has[recurring.n]!has[recurring.unit]]">
-    <$action-setfield recurring.n="1" recurring.unit="days" />
-  </$list>
-  <$action-deletetiddler $tiddler=<<popupTiddler>>/>
-  <$action-sendmessage $message="tm-auto-save-wiki"/>{{$:/plugins/nico/projectify/images/dripicons/checkmark}}  OK
-</$button>
 
