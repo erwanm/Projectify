@@ -7,6 +7,7 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 
+<div class="py-recurring-dropdown">
 <<lingo RepeatEvery>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
 <$select  default='days' field='recurring.unit'>
   <$list filter="days weeks months years">
@@ -17,7 +18,7 @@ type: text/vnd.tiddlywiki
 </$select>
 
 <$vars popupTiddlerCal=<<qualify "$:/state/projectify/recurring-until-dropdown">>>
-<<lingo until>>... <$button popup=<<popupTiddlerCal>> mode="inline" class="tc-btn-invisible">
+<<lingo until>>... <$button popup=<<popupTiddlerCal>> mode="inline">
   <<lingo forever>>  {{$:/core/images/right-arrow}}
 </$button>
   <$reveal state=<<popupTiddlerCal>> type="popup" position="aboveright" animate="no">
@@ -26,7 +27,7 @@ type: text/vnd.tiddlywiki
     </div>
   </$reveal>
 </$vars>
-
+</div>
 
 <$button class="tc-btn-invisible py-btn-recurring-clear">
   <$action-deletefield recurring.n recurring.unit/>
