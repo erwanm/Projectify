@@ -5,19 +5,16 @@ title: $:/plugins/nico/projectify/ui/buttons/TodoRecurring
 type: text/vnd.tiddlywiki
 
 <$vars
+  popupTiddler=<<qualify "$:/state/projectify/todo-recurring-dropdown">>
   cssClass={{{ [all[current]has[recurring.enabled]then[py-btn py-recurring-active]else[py-btn py-recurring-inactive]] }}}
 >
-  <$button class=<<cssClass>>>
+  <$button class=<<cssClass>> popup=<<popupTiddler>>>
     {{$:/plugins/nico/projectify/images/entypo/cycle}}
-    <$list filter="[all[current]!has[recurring.enabled]]" >
-      <$action-setfield recurring.enabled="true" />
-    </$list>
-    <$list filter="[all[current]has[recurring.enabled]]" >
-      <$action-deletefield $field="recurring.enabled" />
-    </$list>
   </$button>
-  <$reveal stateTitle=<<currentTiddler>> stateField="recurring.enabled" type="match" text="true">
+  <$reveal state=<<popupTiddler>> type="popup" position="above" animate="no">
+    <div class="tc-drop-down py-drop-down tc-popup-keep">
       {{||$:/plugins/nico/projectify/ui/forms/TodoRecurring}}
+    </div>
   </$reveal>
 </$vars>
 
