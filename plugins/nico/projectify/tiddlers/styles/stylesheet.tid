@@ -309,22 +309,19 @@ type: text/vnd.tiddlywiki
   padding: 3px;
 }
 
-.py-recurring-dropdown,  .tc-drop-down .py-recurring-dropdown {
+.tc-drop-down .py-recurring-dropdown {
   display: inline;
   font-size: 14px;
   line-height: 2.5em;
   padding:1.5em;
 }
 
-.tc-drop-down .py-recurring-dropdown button {
-  display: inline;
-  width: auto;
-  padding:1px;
+.tc-drop-down .py-recurring-dropdown a, .tc-drop-down .py-recurring-dropdown button {
+   width: auto;
 }
 
-.tc-drop-down .py-recurring-dropdown .py-date-picker .pika-prev button,
-.pika-next .tc-drop-down .py-recurring-dropdown button button {
-padding: 4px;
-width: 20px;
+.tc-drop-down .py-recurring-dropdown button {
+  display: inline;
+  padding:4px;
 }
 
