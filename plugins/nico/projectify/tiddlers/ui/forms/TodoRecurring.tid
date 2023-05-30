@@ -23,13 +23,13 @@ type: text/vnd.tiddlywiki
     </$button>
   </div>
 
-  <$reveal state=<<popupTiddlerRecurringCal>> type="popup" position="aboveright" animate="no">
-    <div class="tc-drop-down py-drop-down py-date-picker">
-      <$tiddler tiddler=<<specialTiddlerRecurringUntil>>>
+  <$tiddler tiddler=<<specialTiddlerRecurringUntil>>>
+    <$reveal state=<<popupTiddlerRecurringCal>> type="popup" position="aboveright" animate="no" >
+      <div class="tc-drop-down py-drop-down py-date-picker">
         {{||$:/plugins/nico/projectify/ui/forms/TodoRecurringUntilDate}}
-      </$tiddler>
-    </div>
-  </$reveal>
+      </div>
+    </$reveal>
+  </$tiddler>
 
 </$let>
 
