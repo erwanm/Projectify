@@ -7,27 +7,31 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 
-<$vars popupTiddlerCal=<<qualify "$:/state/projectify/recurring-until-dropdown">>>
-<div class="py-recurring-dropdown">
-<<lingo RepeatEvery>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
-<$select  default='days' field='recurring.unit'>
-  <$list filter="days weeks months years">
-    <option value=<<currentTiddler>>>
-    <$macrocall $name="lingo" title=<<currentTiddler>> />
-    </option>
-  </$list>
-</$select>
+<$let popupTiddlerRecurringCal=<<qualify "$:/state/projectify/recurring-until-dropdown">>>
+  <div class="py-recurring-dropdown">
+    <<lingo RepeatEvery>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
+    <$select  default='days' field='recurring.unit'>
+      <$list filter="days weeks months years">
+        <option value=<<currentTiddler>>>
+          <$macrocall $name="lingo" title=<<currentTiddler>> />
+        </option>
+      </$list>
+    </$select>
 
-<<lingo until>> <$button popup=<<popupTiddlerCal>> mode="inline">
-  <<lingo forever>>  {{$:/core/images/right-arrow}}
-</$button>
-</div>
-  <$reveal state=<<popupTiddlerCal>> type="popup" position="aboveright" animate="no">
+    <<lingo until>> <$button popup=<<popupTiddlerRecurringCal>> mode="inline">
+      <<lingo forever>>  {{$:/core/images/right-arrow}}
+    </$button>
+  </div>
+
+  <$reveal state=<<popupTiddlerRecurringCal>> type="popup" position="aboveright" animate="no">
     <div class="tc-drop-down py-drop-down py-date-picker">
-      {{||$:/plugins/nico/projectify/ui/forms/TodoRecurringUntilDate}}
+      <$tiddler tiddler=<<specialTiddlerRecurringUntil>>>
+        {{||$:/plugins/nico/projectify/ui/forms/TodoRecurringUntilDate}}
+      </$tiddler>
     </div>
   </$reveal>
-</$vars>
+
+</$let>
 
 <$button class="tc-btn-invisible py-btn-recurring-clear">
   <$action-deletefield recurring.n recurring.unit/>
