@@ -4,4 +4,19 @@ tags:
 title: Demo
 type: text/vnd.tiddlywiki
 
+!! Issue
+
+* The {{$:/plugins/nico/projectify/images/entypo/cycle}} button below (last button at the bottom of the box "add to inbox...") opens a "sticky" popup with severail controls: 
+** the button with the `reveal` is in [[$:/plugins/nico/projectify/ui/buttons/TodoRecurring]] (the class contains `tc-popup-keep` to make the popup sticky)
+** the popup itself is in [[$:/plugins/nico/projectify/ui/forms/TodoRecurring]]
+* The last control in this first popup is a button which opens the `pickaday` calendar to select a day:
+** The tiddler calling the widget is [[$:/plugins/nico/projectify/ui/forms/TodoRecurringUntilDate]]
+**  In case it's relevant, the widget itself is defined in [[$:/plugins/nico/projectify/ui/widgets/date-picker.js]] and the lib is [[$:/plugins/nico/projectify/lib/pikaday.js]]
+
+''The problem: when the user  clicks a date in the calendar the calendar popup closes as expected, but the first popup with all the controls also closes even though it's supposed to stay open.''
+
+Thank you for any advice :)
+
+---
+
 {{$:/plugins/nico/projectify/ui/dashboard/Dashboard}}
