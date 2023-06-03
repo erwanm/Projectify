@@ -1,10 +1,13 @@
-created: 20201219105303278
-modified: 20201219110954677
+created: 20201130170640112
+modified: 20230531153042077
 tags: 
 title: Demo
 type: text/vnd.tiddlywiki
 
+
 !! Issue
+
+([[See thread here|https://talk.tiddlywiki.org/t/issue-with-popup-and-pikaday-widget]])
 
 * The {{$:/plugins/nico/projectify/images/entypo/cycle}} button below (last button at the bottom of the box "add to inbox...") opens a "sticky" popup with severail controls: 
 ** the button with the `reveal` is in [[$:/plugins/nico/projectify/ui/buttons/TodoRecurring]] (the class contains `tc-popup-keep` to make the popup sticky)
@@ -15,7 +18,33 @@ type: text/vnd.tiddlywiki
 
 ''The problem: when the user  clicks a date in the calendar the calendar popup closes as expected, but the first popup with all the controls also closes even though it's supposed to stay open.''
 
-Thank you for any advice :)
+
+
+---
+
+A few days later, I found the source of the problem in [[$:/plugins/nico/projectify/ui/widgets/date-picker.js]]: the Pikaday object is created with this argument:
+
+```
+		onSelect: () => {
+			this.setValue(calendar.getDate());
+			// Close the popup
+			$tw.popup.cancel(0);
+		},
+```
+
+The issue clearly comes from `$tw.popup.cancel(0);` which closes all the popups instead of only the last one. I replaced this with:
+
+```
+onSelect: () => {
+			this.setValue(calendar.getDate());
+			// Close the popup (but only the last level)
+			var info = $tw.popup.popupInfo(this.domNode);
+			$tw.popup.cancel(info.popupLevel -1);
+		},
+```
+
+This retrieves the current popup level in order to close only the last level.
+Now it works as expected :)
 
 ---
 

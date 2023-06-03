@@ -177,8 +177,9 @@ CalendarWidget.prototype.renderCalendar = function() {
 		i18n: this.getLabels(),
 		onSelect: () => {
 			this.setValue(calendar.getDate());
-			// Close the popup
-			$tw.popup.cancel(0);
+			// Close the popup (but only the last level)
+		        var info = $tw.popup.popupInfo(this.domNode);
+			$tw.popup.cancel(info.popupLevel -1);
 		},
 		onDraw: fixPopupClosing
 	});
