@@ -6,6 +6,6 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
-<$py-date-calendar/>
+<$py-date-calendar field="recurring.until"/>
 <hr/>
 <$py-date-clear>{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>

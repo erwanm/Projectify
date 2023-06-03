@@ -35,12 +35,13 @@ type: text/vnd.tiddlywiki
 </$let>
 
 <$button class="tc-btn-invisible py-btn-recurring-clear">
-  <$action-deletefield recurring.n recurring.enabled/>
+  <$action-deletefield recurring.n recurring.enabled recurring.unit recurring.until />
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   {{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>>
 </$button>
 
 <$button class="tc-btn-invisible py-btn-recurring-ok">
+  <$action-setfield recurring.enabled="true" />
   <$list filter="[all[current]!has[recurring.n]!has[recurring.unit]]">
     <$action-setfield recurring.n="1" recurring.unit="days" />
   </$list>
