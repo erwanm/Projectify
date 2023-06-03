@@ -32,6 +32,7 @@ type: text/vnd.tiddlywiki
   <$action-deletefield $tiddler=<<stateTiddler>> $field="priority"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.unit"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.n"/>
+  <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.until"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.enabled"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="due" />
 
