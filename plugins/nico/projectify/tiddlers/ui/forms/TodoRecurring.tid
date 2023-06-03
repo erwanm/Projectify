@@ -19,8 +19,8 @@ type: text/vnd.tiddlywiki
     </$select>
 
     <<lingo until>> <$button popup=<<popupTiddlerRecurringCal>> mode="inline">
-      <$list filter="[all[current]has[due]]" emptyMessage="<<lingo forever>>">
-	 <$view field="due" format="date" template={{$:/language/projectify/DateFormat}}/>
+      <$list filter="[all[current]has[recurring.until]]" emptyMessage="<<lingo forever>>">
+	 <$view field="recurring.until" format="date" template={{$:/language/projectify/DateFormat}}/>
       </$list>
       {{$:/core/images/right-arrow}}
     </$button>

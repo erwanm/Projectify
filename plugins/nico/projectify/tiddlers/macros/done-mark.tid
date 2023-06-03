@@ -58,11 +58,15 @@ type: text/vnd.tiddlywiki
 \define py-mark-as-done()
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
-    <$wikify name="nextdate" text="<<recurring-get-next-date>>">
-      <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
-        <$action-setfield $tiddler=<<createTiddler-title>> due={{{[<nextdate>trim[]]}}}/>
-        <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
-      </$action-createtiddler>
+    <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
+      <$let nextdate={{{[<rawnextdate>trim[]]}}}>
+        <$list filter="[all[current]get[recurring.until]compare:date:gteq<nextdate>]" variable="condition">
+          <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
+            <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
+            <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
+          </$action-createtiddler>
+	</$list>
+      </$let>
     </$wikify>
   </$list>
 \end

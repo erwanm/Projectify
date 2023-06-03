@@ -17,7 +17,7 @@ type: text/vnd.tiddlywiki
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} priority={{{ [<stateTiddler>get[priority]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.unit={{{ [<stateTiddler>get[recurring.unit]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.n={{{ [<stateTiddler>get[recurring.n]] }}}/>
-  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.until={{{ [<stateTiddler>get[due]] }}}/>
+  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.until={{{ [<stateTiddler>get[recurring.until]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.enabled={{{ [<stateTiddler>get[recurring.enabled]] }}}/>
   <$list filter="[<stateTiddler>has[recurring.enabled]]">
     <$list filter="[<stateTiddler>!has[recurring.n]]">
