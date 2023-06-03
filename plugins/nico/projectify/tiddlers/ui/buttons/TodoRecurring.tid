@@ -6,10 +6,15 @@ type: text/vnd.tiddlywiki
 
 <$vars
   popupTiddler=<<qualify "$:/state/projectify/todo-recurring-dropdown">>
-  cssClass={{{ [all[current]has[recurring.enabled]then[py-btn py-recurring-active]else[py-btn py-recurring-inactive]] }}}
+  cssClass={{{ [all[current]has[recurring.enabled]then[py-recurring-active]else[py-btn py-recurring-inactive]] }}}
 >
-  <$button class=<<cssClass>> popup=<<popupTiddler>>>
-    {{$:/plugins/nico/projectify/images/entypo/cycle}}
+  <$button class="py-btn" popup=<<popupTiddler>>>
+    <span class=<<cssClass>>>
+      {{$:/plugins/nico/projectify/images/entypo/cycle}}
+    </span>
+    <$list filter="[all[current]has[recurring.enabled]]">
+     {{!!recurring.n}} <$macrocall $name="lingo" title={{!!recurring.unit}} />
+    </$list>
   </$button>
   <$reveal state=<<popupTiddler>> type="popup" position="above" animate="no">
     <div class="tc-drop-down py-drop-down tc-popup-keep">

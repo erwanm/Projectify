@@ -36,6 +36,7 @@ type: text/vnd.tiddlywiki
 
 <$button class="tc-btn-invisible py-btn-recurring-clear">
   <$action-deletefield recurring.n recurring.enabled recurring.unit recurring.until />
+  <$action-deletetiddler $tiddler=<<popupTiddler>>/>
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   {{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>>
 </$button>

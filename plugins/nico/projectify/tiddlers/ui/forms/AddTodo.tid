@@ -56,7 +56,9 @@ type: text/vnd.tiddlywiki
       <$tiddler tiddler=<<stateTiddler>>>
 	<$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoDueDate" mode="inline"/>
 	<$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
-        <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoRecurring" mode="inline"/>
+	<$list filter="[all[current]has[due]]">
+          <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoRecurring" mode="inline"/>
+	</$list>
      </$tiddler>
     </div>
   </div>
