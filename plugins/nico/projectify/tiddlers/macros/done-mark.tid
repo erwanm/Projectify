@@ -55,16 +55,23 @@ type: text/vnd.tiddlywiki
 \end
 
 
+\procedure create-next-task()
+  <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
+    <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
+    <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
+  </$action-createtiddler>
+\end
+
 \define py-mark-as-done()
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
       <$let nextdate={{{[<rawnextdate>trim[]]}}}>
+        <$list filter="[all[current]!has[recurring.until]]" variable="condition">
+	  <<create-next-task>>
+	</$list>
         <$list filter="[all[current]get[recurring.until]compare:date:gteq<nextdate>]" variable="condition">
-          <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
-            <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
-            <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
-          </$action-createtiddler>
+	  <<create-next-task>>
 	</$list>
       </$let>
     </$wikify>
