@@ -28,17 +28,17 @@ type: text/vnd.tiddlywiki
       {{||$:/plugins/nico/projectify/ui/buttons/TodoPriority}}
     </$reveal>
     <$link to={{!!title}}>
-      XX {{||$:/plugins/nico/projectify/ui/todo/TodoCaption}}
+      {{||$:/plugins/nico/projectify/ui/todo/TodoCaption}}
       <$list filter=<<py-has-todos>> variable="ignore">
 	{{||$:/plugins/nico/projectify/images/pie}}
       </$list>
       <$list filter="[all[current]!text[]]">
 	<span class="py-todo-text-icon">
-	  Y {{$:/plugins/nico/projectify/images/file}}
+	  {{$:/plugins/nico/projectify/images/file}}
 	</span>
       </$list>
     </$link>
   </$checkbox>
 
-  A {{||$:/plugins/nico/projectify/ui/todo/TodoActions}}  B
+  {{||$:/plugins/nico/projectify/ui/todo/TodoActions}}
 </div>
