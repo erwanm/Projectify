@@ -13,6 +13,7 @@ type: text/vnd.tiddlywiki
     
   <$list filter=<<py-is-scheduled>>>
     {{||$:/plugins/nico/projectify/ui/buttons/TodoDueDate}}
+    <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoRecurring" mode="inline"/>
   </$list>
   {{||$:/plugins/nico/projectify/ui/buttons/TodoActions}}
 </span>
