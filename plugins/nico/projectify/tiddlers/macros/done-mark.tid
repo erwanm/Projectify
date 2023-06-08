@@ -56,10 +56,13 @@ type: text/vnd.tiddlywiki
 
 
 \procedure create-next-task()
-  <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
-    <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
-    <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
-  </$action-createtiddler>
+  <$set name="newTitle" filter="[all[current]has[caption]]" value={{!!caption}} emptyValue="<<currentTiddler>>">
+    <$action-createtiddler $basetitle=<<newTitle>> $template=<<currentTiddler>>>
+      <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
+      <$action-setfield $tiddler=<<createTiddler-title>> caption=<<newTitle>>/>
+      <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
+    </$action-createtiddler>
+  </$set>
 \end
 
 \define py-mark-as-done()
