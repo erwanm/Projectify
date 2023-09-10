@@ -1,7 +1,8 @@
 caption: 
 created: 20201130170606065
 due: 20230520174028552
-modified: 20230910165309528
+modified: 20230910165906004
+next: 20230610184028552
 recurring.n: 3
 recurring.unit: weeks
 tags: $:/tags/GettingStarted
@@ -14,13 +15,24 @@ I started this project as an experiment to see how good ~TiddlyWiki could be as 
 
 ---
 
-<$wikify $variable="recurring-get-next-date">
+<$wikify name='rawnextdate' text="<<recurring-get-next-date>>">
 
-<$button>
-      <$action-setfield  next=<<variable>>/>
-GO
-</$button>
+  <$let nextdate={{{[<rawnextdate>trim[]]}}}>
 
+    <$button>
+      <$action-setfield  next=<<nextdate>>/>
+      set 'next' field
+    </$button>
+  </$let>
 </$wikify>
 
-value = {{!!next}}
+<$button>
+      <$action-deletefield  next/>
+
+  reset 'next' field
+</$button>
+
+
+due = {{!!due}}
+
+next = {{!!next}}
