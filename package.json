@@ -39,7 +39,8 @@
 	"homepage": "https://github.com/nicolaspetton/projectify#readme",
 	"dependencies": {
 		"tiddlywiki": "^5.3.1"
-	},	"devDependencies": {
+	},
+        "devDependencies": {
 		"cross-env": "^7.0.3",
 		"nodemon": "^2.0.6"
 	}
