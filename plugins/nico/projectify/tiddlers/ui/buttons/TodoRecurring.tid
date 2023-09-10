@@ -15,6 +15,9 @@ type: text/vnd.tiddlywiki
     <$list filter="[all[current]has[recurring.enabled]]">
      {{!!recurring.n}} <$macrocall $name="lingo" title={{!!recurring.unit}} />
     </$list>
+    <$list filter="[all[current]!has[recurring.enabled]]">
+      <$action-setfield recurring.n="1" recurring.unit="days" />
+    </$list>
   </$button>
   <$reveal state=<<popupTiddler>> type="popup" position="above" animate="no">
     <div class="tc-drop-down py-drop-down tc-popup-keep">
