@@ -1,0 +1,38 @@
+created: 20230916120010555
+modified: 20230916120010555
+tags: 
+title: $:/plugins/nico/projectify/ui/forms/RecurringDeleteNextTask.tid
+type: text/vnd.tiddlywiki
+subtitle: Recurring task marked as undone
+mask-closable: true
+
+
+\define lingo-base() $:/language/projectify/
+
+<$tiddler tiddler=<<tiddler>> >
+
+<<lingo RecurringTask>> "{{!!caption}}" <<lingo markedUndone>> (<<lingo dueDate>> <$view field="due" format="date" template={{$:/language/projectify/DateFormat}}/>).
+
+<<lingo QuestionDeleteNextTask>>
+
+
+<$set name="title" filter="[all[current]has[caption]]" value={{!!caption}} emptyValue=<<currentTiddler>> >
+   <$list filter="[all[tiddlers]caption<title>!tag[done]!title<tiddler>]">
+      <$link />, <<lingo due>> <$view field="due" format="date" template={{$:/language/projectify/DateFormat}}/><br/>
+   </$list>
+</$set>
+
+<$button>
+  <<lingo KeepOtherUndoneTasks>>
+  <$action-sendmessage $message="tm-close-tiddler" />
+</$button> <$button>
+  <<lingo DeleteOtherUndoneTasks>>
+  <$set name="title" filter="[all[current]has[caption]]" value={{!!caption}} emptyValue=<<currentTiddler>> >
+     <$list filter="[all[tiddlers]caption<title>!tag[done]!title<tiddler>]">
+       <$action-sendmessage $message="tm-delete-tiddler" $param=<<currentTiddler>> />
+     </$list>
+  </$set>
+  <$action-sendmessage $message="tm-close-tiddler" />
+</$button>
+
+</$tiddler>

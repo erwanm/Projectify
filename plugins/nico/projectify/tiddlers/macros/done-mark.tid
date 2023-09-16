@@ -83,4 +83,7 @@ type: text/vnd.tiddlywiki
 
 \define py-unmark-as-done()
   <$action-sendmessage $message="tm-auto-save-wiki"/>
+  <$list filter="[all[current]has[recurring.enabled]]">
+    <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/RecurringDeleteNextTask.tid" tiddler=<<currentTiddler>>/>
+  </$list>
 \end
