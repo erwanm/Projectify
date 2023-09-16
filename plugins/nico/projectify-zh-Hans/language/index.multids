@@ -76,3 +76,10 @@ ViewProjectsAs: 更改项目查看形式
 Yesterday: 昨天
 cards: 卡片
 list: 列表
+RepeatEvery: FIXLANG Repeat every
+days: FIXLANG days
+weeks: FIXLANG weeks
+months: FIXLANG months
+years: FIXLANG years
+until: FIXLANG until
+forever: FIXLANG forever
