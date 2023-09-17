@@ -7,13 +7,46 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 
-<<lingo Every>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
-<$select  default='days' field='recurring.unit'>
-  <$list filter="days weeks months years">
-    <option value=<<currentTiddler>>>
-    <$macrocall $name="lingo" title=<<currentTiddler>> />
-    </option>
-  </$list>
-</$select>
+<$let popupTiddlerRecurringCal=<<qualify "$:/state/projectify/recurring-until-dropdown">>>
+  <div class="py-recurring-dropdown">
+    <<lingo RepeatEvery>> <$edit-text field="recurring.n" type="number" default="1" size="3"/>
+    <$select  default='days' field='recurring.unit'>
+      <$list filter="days weeks months years">
+        <option value=<<currentTiddler>>>
+          <$macrocall $name="lingo" title=<<currentTiddler>> />
+        </option>
+      </$list>
+    </$select>
 
+    <<lingo until>> <$button popup=<<popupTiddlerRecurringCal>> mode="inline">
+      <$list filter="[all[current]has[recurring.until]]" emptyMessage="<<lingo forever>>">
+	 <$view field="recurring.until" format="date" template={{$:/language/projectify/DateFormat}}/>
+      </$list>
+      {{$:/core/images/right-arrow}}
+    </$button>
+  </div>
+
+  <$reveal state=<<popupTiddlerRecurringCal>> type="popup" position="aboveright" animate="no">
+    <div class="tc-drop-down py-drop-down py-date-picker">
+      {{||$:/plugins/nico/projectify/ui/forms/TodoRecurringUntilDate}}
+    </div>
+  </$reveal>
+
+</$let>
+
+<$button class="tc-btn-invisible py-btn-recurring-clear">
+  <$action-deletefield recurring.n recurring.enabled recurring.unit recurring.until />
+  <$action-deletetiddler $tiddler=<<popupTiddler>>/>
+  <$action-sendmessage $message="tm-auto-save-wiki"/>
+  {{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>>
+</$button>
+
+<$button class="tc-btn-invisible py-btn-recurring-ok">
+  <$action-setfield recurring.enabled="true" />
+  <$list filter="[all[current]!has[recurring.n]!has[recurring.unit]]">
+    <$action-setfield recurring.n="1" recurring.unit="days" />
+  </$list>
+  <$action-deletetiddler $tiddler=<<popupTiddler>>/>
+  <$action-sendmessage $message="tm-auto-save-wiki"/>{{$:/plugins/nico/projectify/images/dripicons/checkmark}}  OK
+</$button>
 

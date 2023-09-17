@@ -13,25 +13,36 @@ type: text/vnd.tiddlywiki
   />
 
   <$action-listops $tiddler={{$:/temp/projectify/new-todo}} $tags=<<todo-tags>>/>
+  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} caption={{{ [<stateTiddler>get[todo-name]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} due={{{ [<stateTiddler>get[due]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} due.initial={{{ [<stateTiddler>get[due]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} priority={{{ [<stateTiddler>get[priority]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.unit={{{ [<stateTiddler>get[recurring.unit]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.n={{{ [<stateTiddler>get[recurring.n]] }}}/>
+  <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.until={{{ [<stateTiddler>get[recurring.until]] }}}/>
   <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.enabled={{{ [<stateTiddler>get[recurring.enabled]] }}}/>
+  <$list filter="[<stateTiddler>has[recurring.enabled]]">
+    <$list filter="[<stateTiddler>!has[recurring.n]]">
+      <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.n="1" />
+    </$list>
+    <$list filter="[<stateTiddler>!has[recurring.unit]]">
+      <$action-setfield $tiddler={{$:/temp/projectify/new-todo}} recurring.unit="days" />
+    </$list>
+  </$list>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="todo-name"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="due"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="priority"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.unit"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.n"/>
+  <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.until"/>
   <$action-deletefield $tiddler=<<stateTiddler>> $field="recurring.enabled"/>
+  <$action-deletefield $tiddler=<<stateTiddler>> $field="due" />
 
   <$action-sendmessage $message="tm-auto-save-wiki"/>
 </$list>
 \end
 
-<$vars stateTiddler=<<qualify "$:/temp/projectify/add-todo-form">>>
-  ERW <<stateTiddler>>
+<$vars stateTiddler=<<qualify "$:/temp/projectify/add-todo-form">> >
   <div class="py-composite-input">
     <$keyboard key="enter">
     <<add-todo-actions>>
@@ -44,11 +55,13 @@ type: text/vnd.tiddlywiki
     </$keyboard>
 
     <div class="py-todo-actions">
-      <$vars currentTiddler=<<stateTiddler>>>
+      <$tiddler tiddler=<<stateTiddler>>>
 	<$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoDueDate" mode="inline"/>
 	<$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
-	<$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoRecurring" mode="inline"/>
-      </$vars>
+	<$list filter="[all[current]has[due]]">
+          <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoRecurring" mode="inline"/>
+	</$list>
+     </$tiddler>
     </div>
   </div>
   <div class="py-actions">

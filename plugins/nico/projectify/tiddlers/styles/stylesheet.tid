@@ -277,9 +277,11 @@ type: text/vnd.tiddlywiki
 .py-recurring-active,  .py-recurring-active svg,  .py-btn.py-recurring-active {
   fill: #0000ff;
   color: #0000ff;
+  border-width: 0px;
 }
 
 .py-recurring-inactive,  .py-recurring-inactive svg, .py-btn.py-recurring-inactive {
+  border-width: 0px;
 }
 
 .py-btn-recurring-ok,  .tc-drop-down .py-btn-recurring-ok, .tc-drop-down .py-btn-recurring-ok svg {
@@ -308,3 +310,20 @@ type: text/vnd.tiddlywiki
   width: 50px;
   padding: 3px;
 }
+
+.tc-drop-down .py-recurring-dropdown {
+  display: inline;
+  font-size: 14px;
+  line-height: 2.5em;
+  padding:1.5em;
+}
+
+.tc-drop-down .py-recurring-dropdown a, .tc-drop-down .py-recurring-dropdown button {
+   width: auto;
+}
+
+.tc-drop-down .py-recurring-dropdown button {
+  display: inline;
+  padding:4px;
+}
+

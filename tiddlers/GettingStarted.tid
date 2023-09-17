@@ -1,0 +1,38 @@
+caption: 
+created: 20201130170606065
+due: 20230520174028552
+modified: 20230910165906004
+next: 20230610184028552
+recurring.n: 3
+recurring.unit: weeks
+tags: $:/tags/GettingStarted
+title: GettingStarted
+type: text/vnd.tiddlywiki
+
+~Projectify is a simple [[TiddlyWiki|https://tiddlywiki.com]] plugin for managing projects & todo lists, inspired by other tools such as [[Todoist|https://todoist.com]] and [[Basecamp|https://basecamp.com]].
+
+I started this project as an experiment to see how good ~TiddlyWiki could be as a Web Application Platform. It turns out to be an extremely good foundation for building SPAs.
+
+---
+
+<$wikify name='rawnextdate' text="<<recurring-get-next-date>>">
+
+  <$let nextdate={{{[<rawnextdate>trim[]]}}}>
+
+    <$button>
+      <$action-setfield  next=<<nextdate>>/>
+      set 'next' field
+    </$button>
+  </$let>
+</$wikify>
+
+<$button>
+      <$action-deletefield  next/>
+
+  reset 'next' field
+</$button>
+
+
+due = {{!!due}}
+
+next = {{!!next}}

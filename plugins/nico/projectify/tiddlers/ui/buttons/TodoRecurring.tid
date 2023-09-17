@@ -5,19 +5,24 @@ title: $:/plugins/nico/projectify/ui/buttons/TodoRecurring
 type: text/vnd.tiddlywiki
 
 <$vars
-  cssClass={{{ [all[current]has[recurring.enabled]then[py-btn py-recurring-active]else[py-btn py-recurring-inactive]] }}}
+  popupTiddler=<<qualify "$:/state/projectify/todo-recurring-dropdown">>
+  cssClass={{{ [all[current]has[recurring.enabled]then[py-recurring-active]else[py-btn py-recurring-inactive]] }}}
 >
-  <$button class=<<cssClass>>>
-    {{$:/plugins/nico/projectify/images/entypo/cycle}}
-    <$list filter="[all[current]!has[recurring.enabled]]" >
-      <$action-setfield recurring.enabled="true" />
+  <$button class="py-btn" popup=<<popupTiddler>>>
+    <span class=<<cssClass>>>
+      {{$:/plugins/nico/projectify/images/entypo/cycle}}
+    </span>
+    <$list filter="[all[current]has[recurring.enabled]]">
+     {{!!recurring.n}} <$macrocall $name="lingo" title={{!!recurring.unit}} />
     </$list>
-    <$list filter="[all[current]has[recurring.enabled]]" >
-      <$action-deletefield $field="recurring.enabled" />
+    <$list filter="[all[current]!has[recurring.enabled]]">
+      <$action-setfield recurring.n="1" recurring.unit="days" />
     </$list>
   </$button>
-  <$reveal stateTitle=<<currentTiddler>> stateField="recurring.enabled" type="match" text="true">
+  <$reveal state=<<popupTiddler>> type="popup" position="above" animate="no">
+    <div class="tc-drop-down py-drop-down tc-popup-keep">
       {{||$:/plugins/nico/projectify/ui/forms/TodoRecurring}}
+    </div>
   </$reveal>
 </$vars>
 

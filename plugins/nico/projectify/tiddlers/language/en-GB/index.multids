@@ -78,8 +78,17 @@ ViewProjectsAs: View projects as
 Yesterday: Yesterday
 cards: cards
 list: list
-Every: Every
+RepeatEvery: Repeat every
 days: days
 weeks: weeks
 months: months
 years: years
+until: until
+forever: forever
+RecurringTask: Recurring task
+markedUndone: marked as undone
+dueDate: due date:
+QuestionDeleteNextTask: Do you want to delete any undone occurrence of this task automatically generated previously?
+due: due
+KeepOtherUndoneTasks: Keep other undone tasks
+DeleteOtherUndoneTasks: Delete other undone tasks

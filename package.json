@@ -38,10 +38,10 @@
 	},
 	"homepage": "https://github.com/nicolaspetton/projectify#readme",
 	"dependencies": {
-		"tiddlywiki": "github:Jermolene/TiddlyWiki5"
+		"tiddlywiki": "^5.3.1"
 	},
-	"devDependencies": {
-		"nodemon": "^2.0.6",
-		"cross-env": "^7.0.3"
+        "devDependencies": {
+		"cross-env": "^7.0.3",
+		"nodemon": "^2.0.6"
 	}
 }
