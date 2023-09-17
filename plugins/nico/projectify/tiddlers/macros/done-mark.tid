@@ -40,18 +40,20 @@ type: text/vnd.tiddlywiki
 
 
 \procedure recurring-get-next-date()
-  <$list filter="[all[current]field:recurring.unit[days]]">
-    <$transclude $variable=add-days n={{!!recurring.n}}/>
-  </$list>
-  <$list filter="[all[current]field:recurring.unit[weeks]]">
-    <$transclude $variable=add-weeks n={{!!recurring.n}}/>
-  </$list>
-  <$list filter="[all[current]field:recurring.unit[months]]">
-    <$transclude $variable=add-months n={{!!recurring.n}}/>
-  </$list>
-  <$list filter="[all[current]field:recurring.unit[years]]">
-    <$transclude $variable=add-years n={{!!recurring.n}}/>
-  </$list>
+  <$set name="datefield" value={{$:/config/projectify/NextRecurringBasedOnField}}>
+    <$list filter="[all[current]field:recurring.unit[days]]">
+      <$transclude $variable=add-days field=<<datefield>> n={{!!recurring.n}}/>
+    </$list>
+    <$list filter="[all[current]field:recurring.unit[weeks]]">
+      <$transclude $variable=add-weeks field=<<datefield>> n={{!!recurring.n}}/>
+    </$list>
+    <$list filter="[all[current]field:recurring.unit[months]]">
+      <$transclude $variable=add-months field=<<datefield>> n={{!!recurring.n}}/>
+    </$list>
+    <$list filter="[all[current]field:recurring.unit[years]]">
+      <$transclude $variable=add-years field=<<datefield>> n={{!!recurring.n}}/>
+    </$list>
+  </$set>
 \end
 
 
