@@ -4,22 +4,22 @@ tags: $:/tags/Macro
 title: $:/plugins/nico/projectify/macros/done-mark
 type: text/vnd.tiddlywiki
 
-\procedure add-days(field:"due" n:"1")
+\procedure add-days(startdate n:"1")
   <$let inseconds={{{ [<n>multiply[86400000]] }}}>
-    {{{[all[current]get<field>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]]}}}
+    {{{[<startdate>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]]}}}
   </$let>
 \end
 
-\procedure add-weeks(field:"due" n:"1")
+\procedure add-weeks(startdate n:"1")
   <$let inseconds={{{ [<n>multiply[604800000]] }}}>
-    {{{ [all[current]get<field>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
+    {{{ [<startdate>format:date[TIMESTAMP]add<inseconds>format:timestamp[YYYY0MM0DD0hh0mm0ss0XXX]] }}}
   </$let>
 \end
 
-\procedure add-months(field:"due" n:"1")
- <$let m={{{ [all[current]get<field>format:date[0MM]add<n>]}}}
-       y={{{ [all[current]get<field>format:date[YYYY]] }}}
-       rest={{{ [all[current]get<field>format:date[0DD0hh0mm0ss0XXX]] }}} >
+\procedure add-months(startdate n:"1")
+ <$let m={{{ [<startdate>format:date[0MM]add<n>]}}}
+       y={{{ [<startdate>format:date[YYYY]] }}}
+       rest={{{ [<startdate>format:date[0DD0hh0mm0ss0XXX]] }}} >
        <$list filter="[<m>compare:number:lteq[12]remainder[12]pad[2]]" variable="m">
 	     <<y>><<m>><<rest>>
        </$list>
@@ -32,26 +32,26 @@ type: text/vnd.tiddlywiki
 \end
 
 \procedure add-years(field:"due" n:"1")
- <$let y={{{ [all[current]get<field>format:date[YYYY]add<n>] }}}
-       rest={{{ [all[current]get<field>format:date[0MM0DD0hh0mm0ss0XXX]] }}} >
+ <$let y={{{ [<startdate>format:date[YYYY]add<n>] }}}
+       rest={{{ [<startdate>format:date[0MM0DD0hh0mm0ss0XXX]] }}} >
 	     <<y>><<rest>>
   </$let>
 \end
 
 
 \procedure recurring-get-next-date()
-  <$set name="datefield" value={{$:/config/projectify/NextRecurringBasedOnField}}>
+  <$set name="sdate" filter="[all[current]get{$:/config/projectify/NextRecurringBasedOnField}]" emptyValue=<<now "YYYY0MM0DD0hh0mm0ss0XXX">> >
     <$list filter="[all[current]field:recurring.unit[days]]">
-      <$transclude $variable=add-days field=<<datefield>> n={{!!recurring.n}}/>
+      <$transclude $variable=add-days startdate=<<sdate>> n={{!!recurring.n}}/>
     </$list>
     <$list filter="[all[current]field:recurring.unit[weeks]]">
-      <$transclude $variable=add-weeks field=<<datefield>> n={{!!recurring.n}}/>
+      <$transclude $variable=add-weeks startdate=<<sdate>> n={{!!recurring.n}}/>
     </$list>
     <$list filter="[all[current]field:recurring.unit[months]]">
-      <$transclude $variable=add-months field=<<datefield>> n={{!!recurring.n}}/>
+      <$transclude $variable=add-months startdate=<<sdate>> n={{!!recurring.n}}/>
     </$list>
     <$list filter="[all[current]field:recurring.unit[years]]">
-      <$transclude $variable=add-years field=<<datefield>> n={{!!recurring.n}}/>
+      <$transclude $variable=add-years startdate=<<sdate>> n={{!!recurring.n}}/>
     </$list>
   </$set>
 \end
@@ -61,6 +61,7 @@ type: text/vnd.tiddlywiki
   <$set name="newTitle" filter="[all[current]has[caption]]" value={{!!caption}} emptyValue=<<currentTiddler>> >
     <$action-createtiddler $basetitle=<<newTitle>> $template=<<currentTiddler>>>
       <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
+      <$action-setfield $tiddler=<<createTiddler-title>> due.initial=<<nextdate>>/>
       <$action-setfield $tiddler=<<createTiddler-title>> caption=<<newTitle>>/>
       <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
     </$action-createtiddler>
