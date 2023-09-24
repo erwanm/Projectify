@@ -285,13 +285,22 @@ type: text/vnd.tiddlywiki
 }
 
 .py-btn-recurring-ok,  .tc-drop-down .py-btn-recurring-ok, .tc-drop-down .py-btn-recurring-ok svg {
+ display:inline-block;
  fill: <<colour primary>>;
   color: <<colour primary>>;
+  width: 41%;
+  margin-top: .25em;
+  margin-bottom: .25em;
 }
 
 .py-btn-recurring-clear, .tc-drop-down .py-btn-recurring-clear,  .tc-drop-down .py-btn-recurring-clear svg {
+ display:inline-block;
  fill: #e73939;
  color: #e73939;
+  width: 41%;
+  margin-top: .25em;
+  margin-bottom: .25em;
+  margin-left: 2em;
 }
 
 .py-project-category-manager-table {

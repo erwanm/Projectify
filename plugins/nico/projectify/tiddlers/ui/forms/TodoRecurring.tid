@@ -31,17 +31,16 @@ type: text/vnd.tiddlywiki
       {{||$:/plugins/nico/projectify/ui/forms/TodoRecurringUntilDate}}
     </div>
   </$reveal>
-
 </$let>
+<br/>
 
-<$button class="tc-btn-invisible py-btn-recurring-clear">
+<$button class="py-btn-recurring-clear">
   <$action-deletefield recurring.n recurring.enabled recurring.unit recurring.until />
   <$action-deletetiddler $tiddler=<<popupTiddler>>/>
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   {{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>>
 </$button>
-
-<$button class="tc-btn-invisible py-btn-recurring-ok">
+<$button class="py-btn-recurring-ok">
   <$action-setfield recurring.enabled="true" />
   <$list filter="[all[current]!has[recurring.n]!has[recurring.unit]]">
     <$action-setfield recurring.n="1" recurring.unit="days" />
@@ -49,4 +48,3 @@ type: text/vnd.tiddlywiki
   <$action-deletetiddler $tiddler=<<popupTiddler>>/>
   <$action-sendmessage $message="tm-auto-save-wiki"/>{{$:/plugins/nico/projectify/images/dripicons/checkmark}}  OK
 </$button>
-
