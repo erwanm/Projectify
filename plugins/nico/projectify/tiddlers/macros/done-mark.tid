@@ -40,33 +40,52 @@ type: text/vnd.tiddlywiki
 
 
 \procedure recurring-get-next-date()
-  <$list filter="[all[current]field:recurring.unit[days]]">
-    <$transclude $variable=add-days n={{!!recurring.n}}/>
-  </$list>
-  <$list filter="[all[current]field:recurring.unit[weeks]]">
-    <$transclude $variable=add-weeks n={{!!recurring.n}}/>
-  </$list>
-  <$list filter="[all[current]field:recurring.unit[months]]">
-    <$transclude $variable=add-months n={{!!recurring.n}}/>
-  </$list>
-  <$list filter="[all[current]field:recurring.unit[years]]">
-    <$transclude $variable=add-years n={{!!recurring.n}}/>
-  </$list>
+  <$set name="datefield" value={{$:/config/projectify/NextRecurringBasedOnField}}>
+    <$list filter="[all[current]field:recurring.unit[days]]">
+      <$transclude $variable=add-days field=<<datefield>> n={{!!recurring.n}}/>
+    </$list>
+    <$list filter="[all[current]field:recurring.unit[weeks]]">
+      <$transclude $variable=add-weeks field=<<datefield>> n={{!!recurring.n}}/>
+    </$list>
+    <$list filter="[all[current]field:recurring.unit[months]]">
+      <$transclude $variable=add-months field=<<datefield>> n={{!!recurring.n}}/>
+    </$list>
+    <$list filter="[all[current]field:recurring.unit[years]]">
+      <$transclude $variable=add-years field=<<datefield>> n={{!!recurring.n}}/>
+    </$list>
+  </$set>
 \end
 
+
+\procedure create-next-task()
+  <$set name="newTitle" filter="[all[current]has[caption]]" value={{!!caption}} emptyValue=<<currentTiddler>> >
+    <$action-createtiddler $basetitle=<<newTitle>> $template=<<currentTiddler>>>
+      <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
+      <$action-setfield $tiddler=<<createTiddler-title>> caption=<<newTitle>>/>
+      <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
+    </$action-createtiddler>
+  </$set>
+\end
 
 \define py-mark-as-done()
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
-    <$wikify name="nextdate" text="<<recurring-get-next-date>>">
-      <$action-createtiddler $basetitle=<<currentTiddler>> $template=<<currentTiddler>>>
-        <$action-setfield $tiddler=<<createTiddler-title>> due={{{[<nextdate>trim[]]}}}/>
-        <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
-      </$action-createtiddler>
+    <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
+      <$let nextdate={{{[<rawnextdate>trim[]]}}}>
+        <$list filter="[all[current]!has[recurring.until]]" variable="condition">
+	  <<create-next-task>>
+	</$list>
+        <$list filter="[all[current]get[recurring.until]compare:date:gteq<nextdate>]" variable="condition">
+	  <<create-next-task>>
+	</$list>
+      </$let>
     </$wikify>
   </$list>
 \end
 
 \define py-unmark-as-done()
   <$action-sendmessage $message="tm-auto-save-wiki"/>
+  <$list filter="[all[current]has[recurring.enabled]]">
+    <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/RecurringDeleteNextTask.tid" tiddler=<<currentTiddler>>/>
+  </$list>
 \end
