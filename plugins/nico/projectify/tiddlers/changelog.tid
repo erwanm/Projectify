@@ -1,10 +1,26 @@
 caption: ChangeLog
 created: 20201208093546936
-modified: 20210521134528717
+modified: 20220928134528717
 tags:
 title: $:/plugins/nico/projectify/changelog
 type: text/vnd.tiddlywiki
 
+! Release 0.15.0
+
+!! Features
+	
+* New feature: recurring todos
+** a todo is generated automatically with a new due date when a recurring todo is marked as done
+** Option to repeat every N days/weeks/months/years
+** Option to set an end date for a recurring todo
+** Several options to calculate the next due date 
+* Upgrading TiddlyWiki version to 5.3.1
+
+!! Improvements
+
+* change in interface with todo actions dropdown (in progress)
+	
+		
 ! Release 0.14.0
 
 !! Features

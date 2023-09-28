@@ -6,6 +6,8 @@ Projectify is a project management app for [TiddlyWiki](https://tiddlywiki.com),
 
 Projectify is carefully crafted, with an intuitive interface that integrates seamlessy with the core of TiddlyWiki. [Drag and drop](https://tiddlywiki.com/#Drag%20and%20Drop) any tiddler into a project to add it as a todo, [transclude](https://tiddlywiki.com/#Transclusion) and [link](https://tiddlywiki.com/#Linking%20in%20WikiText) other tiddlers into projects or tasks.
 
+The [original Projectify](https://github.com/NicolasPetton/Projectify) was developed by [@NicolasPetton](https://github.com/NicolasPetton). The source code of Projectify version 0.14, the last release of the original project, is still available but archived. The version presented here is a fork of Nicolas's main work, introducing a few minor improvements.
+
 For all changes in the latest 0.15.0 release, see [ChangeLog](href="https://erwanm.github.io/Projectify/demo.html#%24%3A%2Fplugins%2Fnico%2Fprojectify%2Fchangelog).
 
 TODO
