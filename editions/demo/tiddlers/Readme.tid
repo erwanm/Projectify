@@ -14,6 +14,8 @@ Projectify is a project management app for [[TiddlyWiki|https://tiddlywiki.com]]
 
 Projectify is carefully crafted, with an intuitive interface that integrates seamlessy with the core of ~TiddlyWiki. [[Drag and drop |https://tiddlywiki.com/#Drag%20and%20Drop]] any tiddler into a project to add it as a todo, [[transclude|https://tiddlywiki.com/#Transclusion]] and [[link|https://tiddlywiki.com/#Linking%20in%20WikiText]] other tiddlers into projects or tasks.
 
+The [[original Projectify|https://github.com/NicolasPetton/Projectify]] was developed by [[@NicolasPetton|https://github.com/NicolasPetton]]. The source code of Projectify version 0.14, the last release of the original project, is still available but archived. The version presented here is a fork of Nicolas's main work, introducing a few improvements.
+
 For all changes in the latest {{$:/plugins/nico/projectify!!version}} release, see [[ChangeLog|$:/plugins/nico/projectify/changelog]].
 
 !! Demo
@@ -53,6 +55,16 @@ Projectify is currently available in English, Dutch, German, French, Spanish & S
 * To start the TiddlyWiki server, run `npm run serve`. The wiki is available at http://localhost:8080.
 * To serve or build a specific language edition, refer to `package.json`
 * To build HTML files for all editions, run `npm run build`
+
+!!! Dev: check list new release
+
+- update version no in `package.json` (possibly also required TW core version), then run `npm update`
+- update version in `plugins/nico/projectify/plugin.info`
+- update `changelog` tiddler
+- update `README.md` 
+- create tag: `git tag -a <version> -m <message>`
+- build every edition: `npm run build`
+
 
 !! Contributors
 
