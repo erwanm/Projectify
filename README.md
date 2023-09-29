@@ -47,6 +47,21 @@ Projectify is currently available in English, Dutch, German, French, Spanish &am
 - To serve or build a specific language edition, refer to `package.json`
 - To build HTML files for all editions, run `npm run build`
 
+### Dev: check list new release
+
+- update version no in `package.json` (possibly also required TW core version), then run `npm update`
+- update version in `plugins/nico/projectify/plugin.info`
+- update `changelog` tiddler
+- update `README.md` 
+- create tag: `git tag -a <version> -m <message>`
+- build every edition: `npm run build`
+
+```
+npm run build-empty-all
+npm run build-demo
+```
+
+
 ## Contributors
 
 Many thanks to the following people who have contributed to Projectify:
