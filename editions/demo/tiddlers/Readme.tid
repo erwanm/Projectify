@@ -58,12 +58,13 @@ Projectify is currently available in English, Dutch, German, French, Spanish & S
 
 !!! Dev: check list new release
 
-- update version no in `package.json` (possibly also required TW core version), then run `npm update`
-- update version in `plugins/nico/projectify/plugin.info`
-- update `changelog` tiddler
-- update `README.md` 
-- create tag: `git tag -a <version> -m <message>`
-- build every edition: `npm run build`
+* update version no in `package.json` (possibly also required TW core version), then run `npm update`
+* update version in `plugins/nico/projectify/plugin.info`
+* update `changelog` tiddler
+* update `README.md` 
+* create tag: `git tag -a <version> -m <message>`
+* build every edition: `npm run build`
+* commit and push
 
 
 !! Contributors
