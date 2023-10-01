@@ -10,4 +10,8 @@ To create a recurring todo, click the {{$:/plugins/nico/projectify/images/entypo
 
 The next todo will be generated automatically when the current one is marked as done.
 
-By default the next due date is calculated based on the current todo due date, but this can be configured from the ''Projectify'' tab of the  [[Control panel|$:/ControlPanel]]. 
+By default the next due date is calculated based on the current todo due date, but this can be configured from the ''Projectify'' tab of the  [[Control panel|$:/ControlPanel]]:
+
+* By default, if the current due date is modified, for example the todo is postponed by 3 days, then the due date of the next todo will also be postponed by three days.
+* But if the option "initial due date" is selected, then the due date of the next todo will not change, even if the current due date is modifled.
+* If the option "current date" is selected, then the next due date is calculated from the current date when the todo is marked as done, instead of the previous due date.

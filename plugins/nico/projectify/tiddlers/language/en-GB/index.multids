@@ -85,10 +85,14 @@ months: months
 years: years
 until: until
 forever: forever
-RecurringTask: Recurring task
+RecurringTask: Recurring todo
 markedUndone: marked as undone
 dueDate: due date:
-QuestionDeleteNextTask: Do you want to delete any undone occurrence of this task automatically generated previously?
+QuestionDeleteNextTask: Do you want to delete any undone occurrence of this todo automatically generated previously?
 due: due
 KeepOtherUndoneTasks: Keep other undone tasks
 DeleteOtherUndoneTasks: Delete other undone tasks
+NextDueDateBasedOn: Next due date calculated based on:
+CurrentDueDate: current due date
+InitialDueDate: initial due date
+CurrentDate: current date
