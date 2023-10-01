@@ -1,0 +1,13 @@
+created: 20231001180300123
+modified: 20231001180300123
+tags: [[Projectify documentation]]
+title: $:/plugins/nico/projectify/doc/RecurringTodos
+type: text/vnd.tiddlywiki
+
+One often has to do some things on a regular basis, for example one may want to perform a full backup every month. Projectify lets you create a **recurring todo**, programed to repeat every N units of time, possibly until a specific date.
+
+To create a recurring todo, click the {{$:/plugins/nico/projectify/images/entypo/cycle}} button and select the required time interval.
+
+The next todo will be generated automatically when the current one is marked as done.
+
+By default the next due date is calculated based on the current todo due date, but this can be configured from the ''Projectify'' tab of the  [[Control panel|$:/ControlPanel]]. 
