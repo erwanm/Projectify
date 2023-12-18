@@ -166,7 +166,7 @@ type: text/vnd.tiddlywiki
 @media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {
   .py-todo .py-todo-actions .py-btn.py-not-scheduled,
   .py-todo .py-todo-actions .py-btn.py-priority- {
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity ease-in .14s;
   }
 
