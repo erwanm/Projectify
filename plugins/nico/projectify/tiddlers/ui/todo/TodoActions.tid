@@ -10,9 +10,10 @@ type: text/vnd.tiddlywiki
       <$link to={{!!title}} overrideClass="py-project-link"/>
     </$list>
   </$list>
-    
-  <$list filter=<<py-is-scheduled>>>
-    {{||$:/plugins/nico/projectify/ui/buttons/TodoDueDate}}
+
+  <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoDueDate" mode="inline"/>
+  <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
+  <$list filter="[all[current]has[due]]">
     <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoRecurring" mode="inline"/>
   </$list>
   {{||$:/plugins/nico/projectify/ui/buttons/TodoActions}}
