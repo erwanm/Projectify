@@ -4,7 +4,7 @@ tags:
 title: Readme
 type: text/vnd.tiddlywiki
 
-\define tv-wikilink-template() https://projectify.wiki/demo.html#$uri_encoded$
+\define tv-wikilink-template() https://erwanm.github.io/Projectify/demo.html#$uri_encoded$
 
 ! Projectify
 
@@ -14,17 +14,19 @@ Projectify is a project management app for [[TiddlyWiki|https://tiddlywiki.com]]
 
 Projectify is carefully crafted, with an intuitive interface that integrates seamlessy with the core of ~TiddlyWiki. [[Drag and drop |https://tiddlywiki.com/#Drag%20and%20Drop]] any tiddler into a project to add it as a todo, [[transclude|https://tiddlywiki.com/#Transclusion]] and [[link|https://tiddlywiki.com/#Linking%20in%20WikiText]] other tiddlers into projects or tasks.
 
+The [[original Projectify|https://github.com/NicolasPetton/Projectify]] was developed by [[@NicolasPetton|https://github.com/NicolasPetton]]. The source code of Projectify version 0.14, the last release of the original project, is still available but archived. The version presented here is a fork of Nicolas's main work, introducing a few improvements.
+
 For all changes in the latest {{$:/plugins/nico/projectify!!version}} release, see [[ChangeLog|$:/plugins/nico/projectify/changelog]].
 
 !! Demo
 
-A demo is available at [[projectify.wiki|https://projectify.wiki]].
+A demo is available at [[erwanm.github.io/Projectify|https://erwanm.github.io/Projectify]].
 
 !! Download
 
 Download a pre-configured empty wiki:
 
-<a class="py-btn btn-primary download-link" href="https://projectify.wiki/empty.html" download="empty.html">
+<a class="py-btn btn-primary download-link" href="https://erwanm.github.io/Projectify/empty.html" download="empty.html">
   Get Projectify {{$:/core/images/save-button}}
 </a>
 
@@ -53,6 +55,19 @@ Projectify is currently available in English, Dutch, German, French, Spanish & S
 * To start the TiddlyWiki server, run `npm run serve`. The wiki is available at http://localhost:8080.
 * To serve or build a specific language edition, refer to `package.json`
 * To build HTML files for all editions, run `npm run build`
+
+!!! Dev: check list new release
+
+* update version no in `package.json` (possibly also required TW core version), then run `npm update`
+* update version in `plugins/nico/projectify/plugin.info` as well as in every language version `plugins/nico/projectify-xx/plugin.info`
+* update `changelog` tiddler
+* If needed, update `Readme` tiddler in the demo edition
+* update `README.md` 
+* create tag: `git tag -a <version> -m <message>`
+* build every edition: `npm run build`
+* copy the demo and empty editions into the `docs` directory: `cp editions/demo/output/demo.html editions/empty/output/empty.html docs`
+* `git commit` and 'git push --tags'
+
 
 !! Contributors
 

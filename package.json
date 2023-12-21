@@ -1,6 +1,6 @@
 {
 	"name": "projectify",
-	"version": "0.6.1",
+	"version": "0.15",
 	"description": "Project and todo management in TiddlyWiki",
 	"main": "index.js",
 	"scripts": {
@@ -23,7 +23,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@github.com/nicolaspetton/projectify.git"
+		"url": "git+ssh://git@github.com/erwanm/projectify.git"
 	},
 	"keywords": [
 		"TiddlyWiki",
@@ -34,9 +34,9 @@
 	"author": "Nicolas Petton",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/nicolaspetton/projectify/issues"
+		"url": "https://github.com/erwanm/projectify/issues"
 	},
-	"homepage": "https://github.com/nicolaspetton/projectify#readme",
+	"homepage": "https://github.com/erwanm/projectify#readme",
 	"dependencies": {
 		"tiddlywiki": "^5.3.1"
 	},

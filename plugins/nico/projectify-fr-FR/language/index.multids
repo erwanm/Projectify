@@ -92,3 +92,7 @@ QuestionDeleteNextTask: Voulez-vous supprimer toute autre occurrence de cette t�
 due: date limite
 KeepOtherUndoneTasks: Conserver les autres tâches
 DeleteOtherUndoneTasks: Supprimer les autres tâches
+NextDueDateBasedOn: Prochaine date limite basée sur:
+CurrentDueDate: la date limite actuelle
+InitialDueDate: la date limite d'origine
+CurrentDate: la date du jour

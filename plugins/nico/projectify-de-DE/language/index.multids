@@ -92,3 +92,7 @@ QuestionDeleteNextTask: FIXLANG Do you want to delete any undone occurrence of t
 due: FIXLANG due
 KeepOtherUndoneTasks: FIXLANG Keep other undone tasks
 DeleteOtherUndoneTasks: FIXLANG Delete other undone tasks
+NextDueDateBasedOn: FIXLANG Next due date calculated based on:
+CurrentDueDate: FIXLANG current due date
+InitialDueDate: FIXLANG initial due date
+CurrentDate: FIXLANG current date

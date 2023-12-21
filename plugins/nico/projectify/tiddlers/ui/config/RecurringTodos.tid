@@ -1,0 +1,21 @@
+created: 20231001180300123
+modified: 20231001180300123
+tags: $:/plugins/nico/projectify/tags/Config
+title: $:/plugins/nico/projectify/ui/config/RecurringTodos
+list-after: $:/plugins/nico/projectify/ui/config/Categories
+type: text/vnd.tiddlywiki
+caption: {{$:/language/projectify/RecurringTask}}
+
+\define lingo-base() $:/language/projectify/
+
+\define select-option-calc-next-date()
+
+<$select tiddler="$:/config/projectify/NextRecurringBasedOnField">
+  <option value="due"><<lingo CurrentDueDate>></option>
+  <option value="due.initial"><<lingo InitialDueDate>></option>
+  <option value="CURRENT_DATE"><<lingo CurrentDate>></option>
+</$select>
+\end
+
+|<<lingo NextDueDateBasedOn>> |<<select-option-calc-next-date>> |
+

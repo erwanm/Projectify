@@ -35,7 +35,7 @@ type: text/vnd.tiddlywiki
       </$button>
     </$list>
     <$list filter=<<py-is-not-scheduled>>>
-      <$button class="py-btn py-due-date py-not-scheduled" popup=<<popupTiddler>>>
+      <$button class="py-btn py-due-date" popup=<<popupTiddler>>>
 	{{$:/plugins/nico/projectify/images/calendar}}
 	<<lingo Schedule/Caption>>
       </$button>
