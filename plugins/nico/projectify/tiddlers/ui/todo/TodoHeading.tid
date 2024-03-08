@@ -11,7 +11,6 @@ type: text/vnd.tiddlywiki
   <div class="py-todo-heading">
     {{||$:/plugins/nico/projectify/ui/buttons/TodoDueDate}}
     {{||$:/plugins/nico/projectify/ui/buttons/TodoPriority}}
-
     <$vars popupTiddler=<<qualify "$:/state/projectify/todo-heading-dropdown">>>
       <$button
 	popup=<<popupTiddler>>
@@ -37,3 +36,8 @@ type: text/vnd.tiddlywiki
   </div>
 </$list>
 
+<$list filter=<<py-is-completed>>>
+  <div class="py-todo-heading">
+    {{||$:/plugins/nico/projectify/ui/buttons/DoneDate}}  
+  </div>
+</$list>

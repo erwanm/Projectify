@@ -1,0 +1,11 @@
+created: 20240308135048294
+modified: 20240308135048294
+tags:
+title: $:/plugins/nico/projectify/ui/forms/DoneDate
+type: text/vnd.tiddlywiki
+
+\define lingo-base() $:/language/projectify/
+
+<$py-date-calendar field="done.date"/>
+<hr/>
+<$py-date-clear>{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>

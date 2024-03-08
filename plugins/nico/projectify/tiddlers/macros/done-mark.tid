@@ -69,6 +69,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define py-mark-as-done()
+  <$action-setfield done.date=<<now "YYYY0MM0DD0hh0mm0ss0XXX">>/>
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
@@ -85,6 +86,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define py-unmark-as-done()
+  <$action-deletefield done.date/>
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/RecurringDeleteNextTask.tid" tiddler=<<currentTiddler>>/>
