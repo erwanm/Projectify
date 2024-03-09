@@ -7,13 +7,18 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 <$vars popupTiddler=<<qualify "$:/state/projectify/done-date-dropdown">>>
-  <$button class="py-btn py-due-date" popup=<<popupTiddler>>>
+  <$button class="py-btn" popup=<<popupTiddler>>>
     <span class="done"> {{$:/plugins/nico/projectify/images/checkbox-checked-solid}}</span>
-      <$view field="done.date" format="date" template={{$:/language/projectify/DateFormat}}/>
+    <$list
+        filter="[all[current]!has[done.date]]"
+        emptyMessage="""<$view field="done.date" format="date" template={{$:/language/projectify/DateFormat}}/>"""
+    >
+      <<lingo DoneOn>>
+    </$list>
   </$button>
   <$reveal state=<<popupTiddler>> type="popup" position="belowleft" animate="no">
     <div class="tc-drop-down py-drop-down py-date-picker">
-      {{||$:/plugins/nico/projectify/ui/forms/DoneDate}}
+     {{||$:/plugins/nico/projectify/ui/forms/DoneDate}}
     </div>
   </$reveal>
 </$vars>
