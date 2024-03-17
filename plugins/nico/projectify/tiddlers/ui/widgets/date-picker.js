@@ -46,7 +46,8 @@ Compute the internal state of the widget
 */
 AbstractDatePickerWidget.prototype.execute = function () {
 	this.title = this.getAttribute("tiddler", this.getVariable("currentTiddler"));
-	this.field = this.getAttribute("field", "due");
+        this.field = this.getAttribute("field", "due");
+	this.actions = this.getAttribute("actions");
 	this.makeChildWidgets();
 };
 
@@ -89,11 +90,12 @@ AbstractDatePickerWidget.prototype.setValue = function (date) {
 		new $tw.Tiddler(
 			this.wiki.getCreationFields(),
 			this.getTiddler(),
-			updateFields,
-			this.wiki.getModificationFields()
+		        updateFields,
+		    	this.wiki.getModificationFields()
 		)
 	);
 
+    	this.invokeActionString(this.actions, this, "click");	
 	$tw.rootWidget.dispatchEvent({type: "tm-auto-save-wiki"});
 };
 

@@ -6,6 +6,6 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
-<$py-date-calendar field="done.date"/>
+<$py-date-calendar field="done.date" actions="<<py-mark-as-done>>"/>
 <hr/>
 <$py-date-clear>{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>

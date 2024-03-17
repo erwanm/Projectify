@@ -26,7 +26,7 @@ type: text/vnd.tiddlywiki
        <$list filter="[<m>compare:number:gt[12]remainder[12]pad[2]]" variable="m">
            <$let y={{{ [<y>add[1]] }}} >
 	     <<y>><<m>><<rest>>
-	   </$let>       
+   	   </$let>
        </$list>
   </$let>
 \end
@@ -68,9 +68,11 @@ type: text/vnd.tiddlywiki
   </$set>
 \end
 
-\define py-mark-as-done()
+\procedure py-mark-as-done()
   <$action-listops $tags="done"/>
-  <$action-setfield done.date=<<now "YYYY0MM0DD0hh0mm0ss0XXX">>/>
+  <$list filter="[all[current]!has[done.date]]">		   
+     <$action-setfield done.date=<<now "YYYY0MM0DD0hh0mm0ss0XXX">>/>
+  </$list>
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
@@ -86,7 +88,7 @@ type: text/vnd.tiddlywiki
   </$list>
 \end
 
-\define py-unmark-as-done()
+\procedure py-unmark-as-done()
   <$action-deletefield done.date/>
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">

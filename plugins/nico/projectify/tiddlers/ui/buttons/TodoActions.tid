@@ -25,7 +25,7 @@ type: text/vnd.tiddlywiki
 
 
 <$vars popupTiddlerDoneDate=<<qualify "$:/state/projectify/done-date-dropdown">>>
-  <$button class="tc-btn-invisible" popup=<<popupTiddlerDoneDate>> actions=<<mark-as-done>>>
+  <$button class="tc-btn-invisible" popup=<<popupTiddlerDoneDate>>>
      <span class="done"> {{$:/plugins/nico/projectify/images/checkbox-checked-solid}}</span>
       <<lingo DoneOn>>
   </$button>
