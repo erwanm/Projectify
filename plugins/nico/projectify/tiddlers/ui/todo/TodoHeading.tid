@@ -7,6 +7,7 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
+
 <$list filter=<<py-is-todo>>>
   <div class="py-todo-heading">
     {{||$:/plugins/nico/projectify/ui/buttons/TodoDueDate}}
@@ -34,10 +35,15 @@ type: text/vnd.tiddlywiki
       </$reveal>
     </$vars>
   </div>
+
+  Title: <$edit-text field="caption"/>
 </$list>
 
 <$list filter=<<py-is-completed>>>
   <div class="py-todo-heading">
     {{||$:/plugins/nico/projectify/ui/buttons/DoneDate}}  
   </div>
+
+  Title: <$edit-text field="caption"/>
 </$list>
+
