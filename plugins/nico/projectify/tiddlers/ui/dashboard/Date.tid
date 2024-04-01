@@ -4,4 +4,4 @@ title: $:/plugins/nico/projectify/ui/dashboard/Date
 type: text/vnd.tiddlywiki
 
 <$list filter=<<py-is-due-today>>>Today -- </$list>
-<$view field="due" format="date" template="DDth MMM"/>
+<$view field="due" format="date" template="DDD DDth MMM"/>
