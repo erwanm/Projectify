@@ -1,0 +1,17 @@
+created: 20240401135048294
+modified: 20240401135048294
+tags:
+title: $:/plugins/nico/projectify/ui/buttons/TodoDoneDate
+type: text/vnd.tiddlywiki
+
+<$vars popupTiddlerDoneDate=<<qualify "$:/state/projectify/done-date-dropdown">>>
+  <$button class="tc-btn-invisible" popup=<<popupTiddlerDoneDate>>>
+     <span class="done"> {{$:/plugins/nico/projectify/images/checkbox-checked-solid}}</span>
+      <<lingo DoneOn>>
+  </$button>
+  <$reveal state=<<popupTiddlerDoneDate>> type="popup" position="belowright" animate="no">
+    <div class="tc-drop-down py-drop-down py-date-picker">
+     {{||$:/plugins/nico/projectify/ui/forms/DoneDate}}
+    </div>
+  </$reveal>
+</$vars>

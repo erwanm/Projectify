@@ -44,6 +44,5 @@ type: text/vnd.tiddlywiki
     {{||$:/plugins/nico/projectify/ui/buttons/DoneDate}}  
   </div>
 
-  Title: <$edit-text field="caption"/>
 </$list>
 

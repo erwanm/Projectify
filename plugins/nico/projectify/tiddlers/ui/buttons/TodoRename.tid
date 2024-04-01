@@ -1,0 +1,17 @@
+created: 20240401135048294
+modified: 20240401135048294
+tags:
+title: $:/plugins/nico/projectify/ui/buttons/TodoRename
+type: text/vnd.tiddlywiki
+
+<$vars popupTiddlerRename=<<qualify "$:/state/projectify/rename-popup">>>
+  <$button class="tc-btn-invisible" popup=<<popupTiddlerRename>>>
+    {{||$:/core/images/edit-button}} <<lingo RenameTodo>>
+    <$action-sendmessage $message="tm-auto-save-wiki"/>
+  </$button>
+  <$reveal state=<<popupTiddlerRename>> type="popup" animate="yes">
+    <div class="tc-drop-down py-drop-down">
+      <$edit-text field="caption"/><p/>
+    </div>
+  </$reveal>
+</$vars>
