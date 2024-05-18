@@ -73,7 +73,6 @@ type: text/vnd.tiddlywiki
   <$list filter="[all[current]!has[done.date]]">		   
      <$action-setfield done.date=<<now "YYYY0MM0DD0hh0mm0ss0XXX">>/>
   </$list>
-  <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
       <$let nextdate={{{[<rawnextdate>trim[]]}}}>
@@ -86,6 +85,12 @@ type: text/vnd.tiddlywiki
       </$let>
     </$wikify>
   </$list>
+  <$list filter="[all[current]has[nextdate]]">
+    <$let nextdate={{!!nextdate}}>
+      <<create-next-task>>
+      </$let>    
+  </$list>
+  <$action-sendmessage $message="tm-auto-save-wiki"/>
 \end
 
 \procedure py-unmark-as-done()

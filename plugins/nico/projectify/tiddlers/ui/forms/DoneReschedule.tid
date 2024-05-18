@@ -1,0 +1,14 @@
+created: 20240518135048294
+modified: 20240518135048294
+tags:
+title: $:/plugins/nico/projectify/ui/forms/DoneReschedule
+type: text/vnd.tiddlywiki
+
+\define lingo-base() $:/language/projectify/
+
+<$py-date-today>{{$:/plugins/nico/projectify/images/sun}} <<lingo Today>></$py-date-today>
+<$py-date-tomorrow>{{$:/plugins/nico/projectify/images/calendar-event}} <<lingo Tomorrow>></$py-date-tomorrow>
+<$py-date-next-week>{{$:/plugins/nico/projectify/images/calendar}} <<lingo NextWeek>></$py-date-next-week>
+<$py-date-clear>{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>
+<hr/>
+<$py-date-calendar  field="nextdate" actions="<<py-mark-as-done>>"/>
