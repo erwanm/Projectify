@@ -1,6 +1,6 @@
 caption: {{$:/plugins/nico/projectify/images/stack}} {{$:/language/projectify/Next}}
 created: 20200425195221581
-list-after: $:/plugins/nico/projectify/ui/dashbaord/Schedule
+list-after: $:/plugins/nico/projectify/ui/dashboard/Upcoming
 modified: 20210123140005174
 tags: $:/plugins/nico/projectify/tags/dashboard
 title: $:/plugins/nico/projectify/ui/NextActions

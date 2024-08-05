@@ -1,6 +1,6 @@
 caption: {{$:/plugins/nico/projectify/images/calendar-checked}} {{$:/language/projectify/Upcoming}}
 created: 20200424193230404
-list-after: $:/plugins/nico/projectify/ui/dashbaord/Today
+list-after: $:/plugins/nico/projectify/ui/dashboard/InboxAndProjects
 modified: 20210112180541537
 tags: $:/plugins/nico/projectify/tags/dashboard
 title: $:/plugins/nico/projectify/ui/dashbaord/Upcoming
