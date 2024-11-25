@@ -17,17 +17,19 @@ type: text/vnd.tiddlywiki
 \end
 
 \procedure add-months(startdate n:"1")
- <$let m={{{ [<startdate>format:date[0MM]add<n>]}}}
-       y={{{ [<startdate>format:date[YYYY]] }}}
-       rest={{{ [<startdate>format:date[0DD0hh0mm0ss0XXX]] }}} >
-       <$list filter="[<m>compare:number:lteq[12]remainder[12]pad[2]]" variable="m">
-	     <<y>><<m>><<rest>>
-       </$list>
-       <$list filter="[<m>compare:number:gt[12]remainder[12]pad[2]]" variable="m">
-           <$let y={{{ [<y>add[1]] }}} >
-	     <<y>><<m>><<rest>>
-   	   </$let>
-       </$list>
+  <$let m={{{[<startdate>format:date[0MM]add<n>]}}}>
+    <$let y={{{[<startdate>format:date[YYYY]]}}}>
+      <$let rest={{{ [<startdate>format:date[0DD0hh0mm0ss0XXX]] }}} >
+        <$list filter="[<m>compare:number:lteq[12]pad[2]]" variable="mo">
+	      <<y>><<mo>><<rest>>
+        </$list>
+        <$list filter="[<m>compare:number:gt[12]remainder[12]pad[2]]" variable="mo">
+          <$let y={{{ [<y>add[1]] }}} >
+	        <<y>><<mo>><<rest>>
+   	      </$let>
+        </$list>
+      </$let>
+    </$let>
   </$let>
 \end
 
