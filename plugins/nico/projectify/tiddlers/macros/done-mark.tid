@@ -78,13 +78,38 @@ type: text/vnd.tiddlywiki
   <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
-      <$let nextdate={{{[<rawnextdate>trim[]]}}}>
-        <$list filter="[all[current]!has[recurring.until]]" variable="condition">
-	  <<create-next-task>>
-	</$list>
-        <$list filter="[all[current]get[recurring.until]compare:date:gteq<nextdate>]" variable="condition">
-	  <<create-next-task>>
-	</$list>
+      <$let nextdate0={{{[<rawnextdate>trim[]]}}}>
+
+        <$vars stateTiddler=<<qualify "$:/temp/projectify/confirm-next">> >
+          <$action-setfield $tiddler=<<stateTiddler>> due=<<nextdate0>>/>
+
+          <$list filter="[all[current]{$:/config/projectify/ConfirmNextRecurringDate}match[yes]]" variable="dummy">
+            <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/ConfirmNextDate" stateTiddler=<<stateTiddler>>/>
+          </$list>
+          <$list filter="[all[current]{$:/config/projectify/ConfirmNextRecurringDate}match[except_on_due_date]]" variable="dummy" >
+            <$list filter="[{!!done.date}compare:date:ne{!!due}]">
+              <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/ConfirmNextDate" stateTiddler=<<stateTiddler>>/>
+	    </$list>
+          </$list>
+
+
+	  <$tiddler tiddler=<<stateTiddler>>>
+            <$action-setfield $tiddler=CACA text={{!!due}} stateTiddler=<<stateTiddler>>/>
+          </$tiddler>
+
+
+          <$set name="nextdate" tiddler=<<stateTiddler>> field="due" emptyValue=<<nextdate0>> >
+            <$list filter="[all[current]!has[recurring.until]]" variable="condition">
+   	      <<create-next-task>>
+	    </$list>
+            <$list filter="[all[current]get[recurring.until]compare:date:gteq<nextdate>]" variable="condition">
+	      <<create-next-task>>
+	    </$list>
+          </$set>
+        </$vars>
+
+
+
       </$let>
     </$wikify>
   </$list>
