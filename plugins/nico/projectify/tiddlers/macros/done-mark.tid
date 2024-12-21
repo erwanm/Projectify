@@ -75,49 +75,52 @@ type: text/vnd.tiddlywiki
   <$list filter="[all[current]!has[done.date]]">		   
      <$action-setfield done.date=<<now "YYYY0MM0DD0hh0mm0ss0XXX">>/>
   </$list>
-  <$action-sendmessage $message="tm-auto-save-wiki"/>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
-      <$let nextdate0={{{[<rawnextdate>trim[]]}}}>
-
-        <$vars stateTiddler=<<qualify "$:/temp/projectify/confirm-next">> >
-          <$action-setfield $tiddler=<<stateTiddler>> due=<<nextdate0>>/>
-
+      <$let nextdate={{{[<rawnextdate>trim[]]}}}>
+        <$vars stateTiddler=<<qualify "$:/temp/projectify/confirm-next">> sourceTiddler=<<currentTiddler>>>
+          <$action-setfield $tiddler=<<stateTiddler>> due=<<nextdate>>/>
+          <$list filter="[all[current]{$:/config/projectify/ConfirmNextRecurringDate}match[no]]" variable="dummy">
+	    <<trigger-recurring>>
+	  </$list>
           <$list filter="[all[current]{$:/config/projectify/ConfirmNextRecurringDate}match[yes]]" variable="dummy">
-            <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/ConfirmNextDate" stateTiddler=<<stateTiddler>>/>
+            <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/ConfirmNextDate" stateTiddler=<<stateTiddler>> sourceTiddler=<<sourceTiddler>> />
           </$list>
           <$list filter="[all[current]{$:/config/projectify/ConfirmNextRecurringDate}match[except_on_due_date]]" variable="dummy" >
             <$list filter="[{!!done.date}compare:date:ne{!!due}]">
-              <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/ConfirmNextDate" stateTiddler=<<stateTiddler>>/>
-	    </$list>
+              <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/ConfirmNextDate" stateTiddler=<<stateTiddler>> sourceTiddler=<<sourceTiddler>>/>
+	  	    </$list>
           </$list>
-
-
-	  <$tiddler tiddler=<<stateTiddler>>>
-            <$action-setfield $tiddler=CACA text={{!!due}} stateTiddler=<<stateTiddler>>/>
-          </$tiddler>
-
-
-          <$set name="nextdate" tiddler=<<stateTiddler>> field="due" emptyValue=<<nextdate0>> >
-            <$list filter="[all[current]!has[recurring.until]]" variable="condition">
-   	      <<create-next-task>>
-	    </$list>
-            <$list filter="[all[current]get[recurring.until]compare:date:gteq<nextdate>]" variable="condition">
-	      <<create-next-task>>
-	    </$list>
-          </$set>
         </$vars>
-
-
-
       </$let>
     </$wikify>
   </$list>
+  <$action-sendmessage $message="tm-auto-save-wiki"/>
 \end
+
+
+
+\procedure trigger-recurring()
+  <$set name="nextdate" tiddler=<<stateTiddler>> field="due" emptyValue=<<nextdate0>> >
+    <$list filter="[all[current]!has[recurring.until]]" variable="condition">
+      <<create-next-task>>
+    </$list>
+    <$list filter="[all[current]get[recurring.until]compare:date:gteq<nextdate>]" variable="condition">
+      <<create-next-task>>
+    </$list>
+  </$set>
+\end
+
 
 \procedure py-unmark-as-done()
   <$action-deletefield done.date/>
   <$action-sendmessage $message="tm-auto-save-wiki"/>
+  <$action-listops $field="tags" $subfilter="-done"/>
+\end
+
+
+\procedure py-unmark-as-done-and-check-recurring()
+  <<py-unmark-as-done>>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$action-sendmessage $message="tm-modal" $param="$:/plugins/nico/projectify/ui/forms/RecurringDeleteNextTask.tid" tiddler=<<currentTiddler>>/>
   </$list>
