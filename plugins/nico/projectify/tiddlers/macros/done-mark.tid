@@ -33,8 +33,9 @@ type: text/vnd.tiddlywiki
   </$let>
 \end
 
-\procedure add-years(field:"due" n:"1")
- <$let y={{{ [<startdate>format:date[YYYY]add<n>] }}}
+
+\procedure add-years(startdate n:"1")
+  <$let y={{{ [<startdate>format:date[YYYY]add<n>] }}}
        rest={{{ [<startdate>format:date[0MM0DD0hh0mm0ss0XXX]] }}} >
 	     <<y>><<rest>>
   </$let>
