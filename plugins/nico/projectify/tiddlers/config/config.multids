@@ -5,4 +5,5 @@ ShowWelcomeMessages: yes
 ShowCompletedTodos: no
 FirstDayOfWeek: 1
 NextRecurringBasedOnField: due
-ConfirmNextRecurringDate: except_on_due_date
+ConfirmNextRecurringDate: no
+
