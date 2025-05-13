@@ -100,3 +100,7 @@ DoneOn: Done ...
 RenameTodo: Rename ...
 ConfirmNextRecurringDate: Please confirm the next due date:    
 ConfirmationRequired: Confirmation required
+ConfirmNextRecurringDateOption: Confirmation required for next due date
+ExceptOnDueDate: Yes, except on due date
+yes: Yes
+no: No
