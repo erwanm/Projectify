@@ -3,7 +3,7 @@
     "name": "Projectify",
     "description": "Simple project management for TiddlyWiki",
     "author": "NicolasPetton",
-    "version": "0.16.0",
+    "version": "0.16.1",
     "core-version": ">=5.3.1",
     "source": "https://github.com/erwanm/Projectify",
     "list": "doc/Help changelog LICENSE",

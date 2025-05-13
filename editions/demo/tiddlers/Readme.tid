@@ -62,7 +62,7 @@ Projectify is currently available in English, Dutch, German, French, Spanish & S
 * update version in `plugins/nico/projectify/plugin.info` as well as in every language version `plugins/nico/projectify-xx/plugin.info`
 * update `changelog` tiddler
 * If needed, update `Readme` tiddler in the demo edition
-* update `README.md` 
+** The `README.md` will automatically reflect the changes when editions are built. 
 * create tag: `git tag -a <version> -m <message>`
 * build every edition: `npm run build`
 * copy the demo and empty editions into the `docs` directory: `cp editions/demo/output/demo.html editions/empty/output/empty.html docs`
