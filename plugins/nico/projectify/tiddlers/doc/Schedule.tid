@@ -5,6 +5,6 @@ title: $:/plugins/nico/projectify/doc/Schedule
 type: text/vnd.tiddlywiki
 
 [[Todos|$:/plugins/nico/projectify/doc/Todos]] with a due date will appear in
-the [[Upcoming|$:/plugins/nico/projectify/ui/dashbaord/Upcoming]] or
-[[Today|$:/plugins/nico/projectify/ui/dashbaord/Today]] tab of the
+the [[Upcoming|$:/plugins/nico/projectify/ui/dashboard/Upcoming]] or
+[[Today|$:/plugins/nico/projectify/ui/dashboard/Today]] tab of the
 [[Dashboard|$:/plugins/nico/projectify/doc/Dashboard]].

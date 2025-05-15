@@ -3,7 +3,7 @@ created: 20200424193230404
 list-after: $:/plugins/nico/projectify/ui/dashboard/InboxAndProjects
 modified: 20210112180541537
 tags: $:/plugins/nico/projectify/tags/dashboard
-title: $:/plugins/nico/projectify/ui/dashbaord/Upcoming
+title: $:/plugins/nico/projectify/ui/dashboard/Upcoming
 type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/

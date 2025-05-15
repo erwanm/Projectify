@@ -7,5 +7,5 @@ title: $:/plugins/nico/projectify/ui/sidebar/Upcoming
 type: text/vnd.tiddlywiki
 
 <div class="py-sidebar-section">
-  {{$:/plugins/nico/projectify/ui/dashbaord/Upcoming}}
+  {{$:/plugins/nico/projectify/ui/dashboard/Upcoming}}
 </div>
