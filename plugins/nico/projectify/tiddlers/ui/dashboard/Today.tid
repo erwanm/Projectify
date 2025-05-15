@@ -1,9 +1,9 @@
-caption: {{$:/plugins/nico/projectify/images/sun}} {{$:/language/projectify/Today}} {{$:/plugins/nico/projectify/ui/dashbaord/TodayCount}}
+caption: {{$:/plugins/nico/projectify/images/sun}} {{$:/language/projectify/Today}} {{$:/plugins/nico/projectify/ui/dashboard/TodayCount}}
 created: 20210107213438937
 list-after: $:/plugins/nico/projectify/ui/dashboard/InboxAndProjects
 modified: 20210112180541507
 tags: 
-title: $:/plugins/nico/projectify/ui/dashbaord/Today
+title: $:/plugins/nico/projectify/ui/dashboard/Today
 type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
