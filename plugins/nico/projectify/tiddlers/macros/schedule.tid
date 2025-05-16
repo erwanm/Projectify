@@ -13,6 +13,14 @@ type: text/vnd.tiddlywiki
   />
 \end
 
+\define py-schedule-overdue-and-priority-higher-than(p:"0")
+  <$list
+    filter=[function[py-todos-overdue-and-priority-higher-than],[$p$]]
+    template="$:/plugins/nico/projectify/ui/todo/TodoItem"
+  />
+\end
+
+
 \define py-schedule-day(day)
   <$vars day=<<__day__>>>
     <$list

@@ -8,23 +8,32 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
-<$vars showProjectLinks="yes">
-  <$list
-    filter=<<py-has-scheduled-todos-in-projects>>
-    emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
-  >
-    <$list filter=<<py-has-overdue-todos>>>
-      <dl>
-	<dt><<lingo Overdue>></dt>
-	<dd><<py-schedule-overdue>></dd>
-      </dl>
-    </$list>
 
-    <$list filter=<<py-upcoming-due-dates>>>
-      <dl>
-	<dt>{{||$:/plugins/nico/projectify/ui/dashboard/Date}}</dt>
-	<dd><$macrocall $name="py-schedule-day" day={{!!due}}/></dd>
-      </dl>
+<$vars priorityFilterStateTiddler="$:/config/projectify/UpcomingPriorityFilter" showProjectLinks="yes">
+  <$tiddler tiddler=<<priorityFilterStateTiddler>> >
+    <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
+    {{<<priorityFilterStateTiddler>>!!priority}}
+
+  </$tiddler>
+  <$set name="priorityFilter" filter="[<priorityFilterStateTiddler>get[priority]]" emptyValue="0" >
+
+    <$list
+      filter=<<py-has-scheduled-todos-in-projects>>
+      emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
+    >
+      <$list filter=<<py-has-overdue-todos>>>
+        <dl>
+	  <dt><<lingo Overdue>> </dt>
+	  <dd><$transclude $variable="py-schedule-overdue-and-priority-higher-than" p=<<priorityFilter>> /></dd>
+        </dl>
+      </$list>
+
+      <$list filter=<<py-upcoming-due-dates>>>
+        <dl>
+  	  <dt>{{||$:/plugins/nico/projectify/ui/dashboard/Date}}</dt>
+	  <dd><$macrocall $name="py-schedule-day" day={{!!due}}/></dd>
+        </dl>
+      </$list>
     </$list>
-  </$list>
+  </$set>
 </$vars>

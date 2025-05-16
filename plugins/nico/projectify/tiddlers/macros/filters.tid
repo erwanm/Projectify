@@ -98,6 +98,11 @@ type: text/vnd.tiddlywiki
 [all[tiddlers]!tag[done]tag[todo]!has[draft.of]!days:due[-1]sort[due]]
 \end
 
+\function py-todos-overdue-and-priority-higher-than(p:0)
+[all[tiddlers]!tag[done]tag[todo]!has[draft.of]!days:due[-1]sort[due]] :filter[get[priority]else[0]compare:integer:gteq<p>]
+\end
+
+
 \define py-todos-due-today-or-overdue()
 [all[tiddlers]days:due[0]] [all[tiddlers]!days:due[-1]] +[!has[draft.of]!tag[done]tag[todo]sort[due]]
 \end
