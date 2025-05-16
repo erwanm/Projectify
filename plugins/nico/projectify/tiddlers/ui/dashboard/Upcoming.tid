@@ -10,13 +10,17 @@ type: text/vnd.tiddlywiki
 
 
 <$vars priorityFilterStateTiddler="$:/config/projectify/UpcomingPriorityFilter" showProjectLinks="yes">
-  <$tiddler tiddler=<<priorityFilterStateTiddler>> >
-    <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
-    {{<<priorityFilterStateTiddler>>!!priority}}
+ 
+  <div class="py-quick-filters">
+    &nbsp;
+    <span class="py-quick-filters-actions">
+      <$tiddler tiddler=<<priorityFilterStateTiddler>> >
+        Priority ≥ &nbsp; <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
+      </$tiddler>
+    </span>
+  </div>
 
-  </$tiddler>
   <$set name="priorityFilter" filter="[<priorityFilterStateTiddler>get[priority]]" emptyValue="0" >
-
     <$list
       filter=<<py-has-scheduled-todos-in-projects>>
       emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
