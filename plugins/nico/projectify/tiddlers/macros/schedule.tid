@@ -30,6 +30,16 @@ type: text/vnd.tiddlywiki
   </$vars>
 \end
 
+\procedure py-schedule-day-with-priority-higher-than(day,p:0)
+  <$vars day=<<__day__>> >
+    <$list
+      filter="[function[py-todos-due-on-and-priority-higher-than],<p>]"
+      template="$:/plugins/nico/projectify/ui/todo/TodoItem"
+      />
+  </$vars>
+\end
+
+
 \define py-schedule-today()
   <$list
     filter=<<py-todos-due-today>>
@@ -37,3 +47,4 @@ type: text/vnd.tiddlywiki
     emptyMessage="🌞 {{$:/language/projectify/AllClear}}"
   />
 \end  
+

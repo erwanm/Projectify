@@ -22,6 +22,10 @@ type: text/vnd.tiddlywiki
 [all[tiddlers]tag[todo]!tag[done]!has[draft.of]has[due]limit[1]]
 \end
 
+\function py-has-scheduled-todos-in-projects-with-priority-higher-than(p:0)
+[all[tiddlers]tag[todo]!tag[done]!has[draft.of]has[due]] :filter[get[priority]else[0]compare:integer:gteq<p>]  +[first[]]
+\end
+
 \define py-has-active-projects()
 [all[tiddlers]tag[Project]!has[draft.of]!tag[done]limit[1]]
 \end
@@ -111,8 +115,18 @@ type: text/vnd.tiddlywiki
 [all[tiddlers]tag[todo]!has[draft.of]!tag[done]has[due]sort[due]eachday[due]] -[!days:due[-1]]
 \end
 
+\function py-upcoming-due-dates-with-priority-higher-than(p:0)
+[all[tiddlers]tag[todo]!tag[done]!has[draft.of]has[due]sort[due]eachday[due]] -[!days:due[-1]] :filter[get[priority]else[0]compare:integer:gteq<p>]
+\end
+
+
+
 \define py-todos-due-on()
 [all[tiddlers]!tag[done]tag[todo]!has[draft.of]sameday:due<day>!nsort[priority]]
+\end
+
+\function py-todos-due-on-and-priority-higher-than(p:0)
+[all[tiddlers]!tag[done]tag[todo]!has[draft.of]sameday:due<day>!nsort[priority]] :filter[get[priority]else[0]compare:integer:gteq<p>]
 \end
 
 \define py-has-overdue-todos()

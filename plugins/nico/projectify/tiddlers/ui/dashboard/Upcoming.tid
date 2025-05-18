@@ -22,7 +22,7 @@ type: text/vnd.tiddlywiki
 
   <$set name="priorityFilter" filter="[<priorityFilterStateTiddler>get[priority]]" emptyValue="0" >
     <$list
-      filter=<<py-has-scheduled-todos-in-projects>>
+      filter="[function[py-has-scheduled-todos-in-projects-with-priority-higher-than],<priorityFilter>]"
       emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
     >
       <$list filter=<<py-has-overdue-todos>>>
@@ -32,10 +32,11 @@ type: text/vnd.tiddlywiki
         </dl>
       </$list>
 
-      <$list filter=<<py-upcoming-due-dates>>>
+      <$list filter="[function[py-upcoming-due-dates-with-priority-higher-than],<priorityFilter>]">
+      DAY:<<currentTiddler>>
         <dl>
   	  <dt>{{||$:/plugins/nico/projectify/ui/dashboard/Date}}</dt>
-	  <dd><$macrocall $name="py-schedule-day" day={{!!due}}/></dd>
+	  <dd><$transclude $variable="py-schedule-day-with-priority-higher-than" day={{!!due}} p=<<priorityFilter>> /></dd>
         </dl>
       </$list>
     </$list>
