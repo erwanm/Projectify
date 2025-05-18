@@ -7,3 +7,4 @@ FirstDayOfWeek: 1
 NextRecurringBasedOnField: due
 ConfirmNextRecurringDate: no
 UpcomingPriorityFilter: 0
+TodayPriorityFilter: 0

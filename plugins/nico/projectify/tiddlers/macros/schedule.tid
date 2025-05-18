@@ -48,3 +48,13 @@ type: text/vnd.tiddlywiki
   />
 \end  
 
+
+\procedure py-schedule-today-and-priority-higher-than(p:0)
+    <$list
+      filter="[function[py-todos-due-today-and-priority-higher-than],<p>]"
+      template="$:/plugins/nico/projectify/ui/todo/TodoItem"
+      emptyMessage="🌞 {{$:/language/projectify/AllClear}}"
+    />
+\end
+
+

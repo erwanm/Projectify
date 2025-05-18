@@ -157,6 +157,11 @@ type: text/vnd.tiddlywiki
 [all[current]!has[draft.of]days:due[0]]
 \end
 
+\function py-todos-due-today-and-priority-higher-than(p:0)
+[all[tiddlers]!tag[done]tag[todo]!has[draft.of]days:due[0]!nsort[priority]] :filter[get[priority]else[0]compare:integer:gteq<p>]
+\end
+
+
 \define py-is-due-yesterday()
 [all[current]!has[draft.of]days:due[-1]]
 \end

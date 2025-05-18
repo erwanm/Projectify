@@ -33,7 +33,6 @@ type: text/vnd.tiddlywiki
       </$list>
 
       <$list filter="[function[py-upcoming-due-dates-with-priority-higher-than],<priorityFilter>]">
-      DAY:<<currentTiddler>>
         <dl>
   	  <dt>{{||$:/plugins/nico/projectify/ui/dashboard/Date}}</dt>
 	  <dd><$transclude $variable="py-schedule-day-with-priority-higher-than" day={{!!due}} p=<<priorityFilter>> /></dd>
