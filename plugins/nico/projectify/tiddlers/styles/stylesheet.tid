@@ -113,6 +113,16 @@ type: text/vnd.tiddlywiki
   border: none;
 }
 
+.py-quick-filters-actions {
+  float: right;
+  font-size: .8em;
+  font-style: italic;
+}
+
+.py-quick-filters {
+  border: none;
+}
+
 .py-todo .py-project-link {
   font-size: .8em;
   color: #aaa;
