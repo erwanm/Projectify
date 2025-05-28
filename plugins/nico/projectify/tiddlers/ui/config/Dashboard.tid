@@ -27,3 +27,6 @@ caption: {{$:/language/projectify/Dashboard}}
 
 |<<lingo DefaultDashboardTab>> |<<default-dashboard-tab>> |
 |<<lingo ViewProjectsAs>> |<<projects-view>> |
+
+
+{{||$:/plugins/nico/projectify/ui/dashboard/SelectAndOrderTabs}}

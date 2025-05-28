@@ -100,3 +100,5 @@ ConfirmNextRecurringDateOption: FIXLANG Confirmation required for next due date
 ExceptOnDueDate: FIXLANG Yes, except on due date
 yes: FIXLANG Yes
 no: FIXLANG No
+SelectDashboardTabs: FIXLANG Select active tabs
+OrderDashboardTabs: FIXLANG Choose the order of the tabs (drag and drop)

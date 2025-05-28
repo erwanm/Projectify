@@ -104,3 +104,5 @@ ConfirmNextRecurringDateOption: Confirmation required for next due date
 ExceptOnDueDate: Yes, except on due date
 yes: Yes
 no: No
+SelectDashboardTabs: Select active tabs
+OrderDashboardTabs: Choose the order of the tabs (drag and drop)

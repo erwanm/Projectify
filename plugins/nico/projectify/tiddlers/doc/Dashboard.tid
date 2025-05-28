@@ -29,4 +29,7 @@ following:
   <$button class="py-btn btn-primary" set="$:/state/projectify/usage-show-dashboard" setTo="show">Show result</$button>
 </$reveal>
 
-The dashboard can be customized in many ways, for instance to [[display custom tabs|$:/plugins/nico/projectify/doc/DashboardCustomTabs]] or [[display the Inbox in a separate tab|$:/plugins/nico/projectify/doc/DashboardInboxSeparateTab]].
+The dashboard can be customized in many ways:
+
+* The list of tabs, as well as their order, can be configured in the [[Control Panel dashboard section|$:/plugins/nico/projectify/ui/config/Dashboard]]
+* New tabs can be added, for instance to [[display custom tabs|$:/plugins/nico/projectify/doc/DashboardCustomTabs]] or [[display the Inbox in a separate tab|$:/plugins/nico/projectify/doc/DashboardInboxSeparateTab]].

@@ -8,9 +8,9 @@ type: text/vnd.tiddlywiki
 
 <$macrocall
   $name="tabs"
-  tabsList="[all[tiddlers+shadows]tag[$:/plugins/nico/projectify/tags/dashboard]]"
+  tabsList={{$:/config/projectify/ActiveDashboardTabs}}
   default={{$:/config/projectify/DefaultDashboardTab}}
-  state="$:/state/projects-and-schedule"
+  state="$:/state/py-dashboard-selected-tab"
   class="py-tabs"
 />
 

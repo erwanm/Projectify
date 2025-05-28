@@ -104,4 +104,6 @@ ConfirmNextRecurringDateOption: Confirmation requise pour la prochaine date limi
 ExceptOnDueDate: Oui, sauf à la date
 yes: Oui
 no: Non
+SelectDashboardTabs: Selectionnez les onglets actifs
+OrderDashboardTabs: Choisissez l'ordre des onglets (par glisser-déposer)
 
