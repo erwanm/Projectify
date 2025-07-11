@@ -73,13 +73,13 @@ type: text/vnd.tiddlywiki
 
 \procedure py-mark-as-done()
   <$action-listops $tags="done"/>
-  <$list filter="[all[current]!has[done.date]]">		   
+  <$list filter="[all[current]!has[done.date]]">
      <$action-setfield done.date=<<now "YYYY0MM0DD0hh0mm0ss0XXX">>/>
   </$list>
   <$list filter="[all[current]has[recurring.enabled]]">
     <$wikify name="rawnextdate" text="<<recurring-get-next-date>>">
       <$let nextdate={{{[<rawnextdate>trim[]]}}}>
-        <$vars stateTiddler=<<qualify "$:/temp/projectify/confirm-next">> sourceTiddler=<<currentTiddler>>>
+        <$vars stateTiddler=<<qualify "$:/temp/projectify/confirm-next">> sourceTiddler=<<currentTiddler>> nextdate0=<<nextdate>> >
           <$action-setfield $tiddler=<<stateTiddler>> due=<<nextdate>>/>
           <$list filter="[all[current]{$:/config/projectify/ConfirmNextRecurringDate}match[no]]" variable="dummy">
 	    <<trigger-recurring>>
