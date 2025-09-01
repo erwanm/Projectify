@@ -67,3 +67,28 @@ type: text/vnd.tiddlywiki
     />
   </div>
 \end
+
+\procedure todo-list-with-fancy-dates(todofilter:"[tag[todo]!tag[done]]" datefield:"due" startdate:"000000000000" enddate:"999999999999" minpriority:"0")
+  <$list filter="[all[tiddlers]!has[draft.of]filter<todofilter>] :filter[get[priority]else[0]compare:integer:gteq<p>] :filter[get<datefield>compare:string:gteq<startdate>compare:string:lteq<enddate>] :map[get<datefield>format:date[YYYY0MM]] +[unique[]sort[]]" variable="dateprefix">
+    <div class="py-todo-list-formatted-month">
+       <$list filter="[<dateprefix>addsuffix[01]format:date[MMM YYYY]]" variable="monthyear">
+         <<monthyear>>
+       </$list>
+    </div>
+
+    <$list filter="[all[tiddlers]!has[draft.of]filter<todofilter>] :filter[get[priority]else[0]compare:integer:gteq<p>] :filter[get<datefield>prefix<dateprefix>] :map[get<datefield>format:date[YYYY0MM0DD]] +[unique[]sort[]]" variable="day">
+      <dl>
+        <div class="py-todo-list-formatted-day">
+          <dt> <$list filter="[<day>format:date[DDD DD]]" variable="formattedday"> <<formattedday>> </$list> </dt>
+        </div>
+        <dd>
+          <$list
+            filter="[all[tiddlers]!has[draft.of]filter<todofilter>] :filter[get[priority]else[0]compare:integer:gteq<p>] :filter[get<datefield>prefix<day>]"
+            template="$:/plugins/nico/projectify/ui/todo/TodoItem"
+           />
+        </dd>
+      </dl>
+    </$list>
+  </$list>
+
+\end
