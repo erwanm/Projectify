@@ -9,18 +9,12 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 
-<$vars priorityFilterStateTiddler="$:/config/projectify/UpcomingPriorityFilter" showProjectLinks="yes">
- 
-  <div class="py-quick-filters">
-    &nbsp;
-    <span class="py-quick-filters-actions">
-      <$tiddler tiddler=<<priorityFilterStateTiddler>> >
-        Priority ≥ &nbsp; <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
-      </$tiddler>
-    </span>
-  </div>
+<$vars filtersStateTiddler="$:/config/projectify/UpcomingFilters" showProjectLinks="yes">
+    <$tiddler tiddler=<<filtersStateTiddler>> >
+      <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/> 
+    </$tiddler>
 
-  <$set name="priorityFilter" filter="[<priorityFilterStateTiddler>get[priority]]" emptyValue="0" >
+  <$set name="priorityFilter" filter="[<filtersStateTiddler>get[priority]]" emptyValue="0" >
     <$list
       filter="[function[py-has-scheduled-todos-in-projects-with-priority-higher-than],<priorityFilter>]"
       emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
