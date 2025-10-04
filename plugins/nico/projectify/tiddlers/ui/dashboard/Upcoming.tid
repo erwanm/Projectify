@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 
-<$vars filtersStateTiddler="$:/config/projectify/UpcomingFilters" showProjectLinks="yes">
+<$vars filtersStateTiddler=<<qualify "$:/state/projectify/UpcomingListFilters">> showProjectLinks="yes">
     <$tiddler tiddler=<<filtersStateTiddler>> >
       <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/> 
     </$tiddler>

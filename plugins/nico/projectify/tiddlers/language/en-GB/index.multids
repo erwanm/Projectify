@@ -106,5 +106,6 @@ yes: Yes
 no: No
 SelectDashboardTabs: Select active tabs
 OrderDashboardTabs: Choose the order of the tabs (drag and drop)
-From: From ...
-To: To ...
+From: From
+To: to
+Search: Search

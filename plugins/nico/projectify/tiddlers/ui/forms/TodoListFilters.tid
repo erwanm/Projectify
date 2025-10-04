@@ -27,11 +27,12 @@ type: text/vnd.tiddlywiki
 <div class="py-quick-filters">
   &nbsp;
   <span class="py-quick-filters-actions">
-    
-    <<lingo Priority/Hint>> ≥ &nbsp; <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
-    <$transclude $variable="pick-a-date" text=<<lingo From>> fieldname="from.date" popuptiddler=<<qualify "$:/state/projectify/from-date-dropdown">> />
-    <$transclude $variable="pick-a-date" text=<<lingo To>> fieldname="to.date" popuptiddler=<<qualify "$:/state/projectify/to-date-dropdown">> />
-
+     <<lingo Search>> <$edit-text size=12 field="text.query"/>&ensp;&ensp;&ensp;&ensp;
+     <<lingo Priority/Hint>> ≥ &nbsp; <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>&ensp;&ensp;&ensp;&ensp;
+     <<lingo From>> <$transclude $variable="pick-a-date" text="date" fieldname="from.date" popuptiddler=<<qualify "$:/temp/projectify/TodoListFilters-pick-a-date-from">>/>
+     <<lingo To>> <$transclude $variable="pick-a-date" text="date" fieldname="to.date" popuptiddler=<<qualify "$:/temp/projectify/TodoListFilters-pick-a-date-to">>/>
     </span>
-    
+
+
+
   </div>
