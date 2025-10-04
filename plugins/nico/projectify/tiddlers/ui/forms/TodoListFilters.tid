@@ -16,7 +16,7 @@ type: text/vnd.tiddlywiki
     <div class="tc-drop-down py-drop-down py-date-picker">
       <$py-date-calendar field=<<fieldname>> />
       <hr/>
-      <$py-date-clear>{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>
+      <$py-date-clear field=<<fieldname>> >{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>
     </div>
   </$reveal>
 \end
