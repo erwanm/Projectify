@@ -11,10 +11,14 @@ type: text/vnd.tiddlywiki
 
 <$vars filtersStateTiddler=<<qualify "$:/state/projectify/UpcomingListFilters">> showProjectLinks="yes">
     <$tiddler tiddler=<<filtersStateTiddler>> >
-      <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/> 
+      <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/>
+
+<$link><<filtersStateTiddler>></$link>
     </$tiddler>
 
   <$set name="priorityFilter" filter="[<filtersStateTiddler>get[priority]]" emptyValue="0" >
+  <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" emptyValue=<<now>> >
+  <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" emptyValue="" >
     <$list
       filter="[function[py-has-scheduled-todos-in-projects-with-priority-higher-than],<priorityFilter>]"
       emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
@@ -26,12 +30,10 @@ type: text/vnd.tiddlywiki
         </dl>
       </$list>
 
-      <$list filter="[function[py-upcoming-due-dates-with-priority-higher-than],<priorityFilter>]">
-        <dl>
-  	  <dt>{{||$:/plugins/nico/projectify/ui/dashboard/Date}}</dt>
-	  <dd><$transclude $variable="py-schedule-day-with-priority-higher-than" day={{!!due}} p=<<priorityFilter>> /></dd>
-        </dl>
-      </$list>
+      <$transclude $variable="py-todo-list-with-fancy-dates" startdate=<<fromDate>> endDate=<<toDate>> minPriority=<<priorityFilter>> />
+      
     </$list>
+  </$set>
+  </$set>
   </$set>
 </$vars>
