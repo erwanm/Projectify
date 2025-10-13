@@ -17,20 +17,14 @@ type: text/vnd.tiddlywiki
     </$tiddler>
 
   <$set name="priorityFilter" filter="[<filtersStateTiddler>get[priority]]" emptyValue="0" >
-  <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" emptyValue=<<now>> >
-  <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" emptyValue="" >
+  <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" emptyValue="00000000000000000" >
+  <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" emptyValue="99999999999999999" >
     <$list
       filter="[function[py-has-scheduled-todos-in-projects-with-priority-higher-than],<priorityFilter>]"
       emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
     >
-      <$list filter=<<py-has-overdue-todos>>>
-        <dl>
-	  <dt><<lingo Overdue>> </dt>
-	  <dd><$transclude $variable="py-schedule-overdue-and-priority-higher-than" p=<<priorityFilter>> /></dd>
-        </dl>
-      </$list>
 
-      <$transclude $variable="py-todo-list-with-fancy-dates" startdate=<<fromDate>> endDate=<<toDate>> minPriority=<<priorityFilter>> />
+      <$transclude $variable="py-todo-list-with-fancy-dates" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> />
       
     </$list>
   </$set>
