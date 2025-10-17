@@ -106,3 +106,7 @@ yes: FIXLANG Yes
 no: FIXLANG No
 SelectDashboardTabs: FIXLANG Select active tabs
 OrderDashboardTabs: FIXLANG Choose the order of the tabs (drag and drop)
+From: FIXLANG From
+To: FIXLANG to
+Search: FIXLANG Search
+Past: FIXLANG Past

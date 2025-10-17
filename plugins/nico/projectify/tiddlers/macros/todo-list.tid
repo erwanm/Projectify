@@ -70,20 +70,20 @@ type: text/vnd.tiddlywiki
 
 
 
-\procedure py-todo-list-rich-filters(todofilter:"tag[todo]!tag[done]" datefield:"due" startdate:"" enddate:"" minpriority:"" targettext:"")
+\procedure py-todo-list-rich-filters(todofilter:"tag[todo]!tag[done]" datefield:"due" sortfilter:"+[unique[]sort[]]" startdate:"" enddate:"" minpriority:"" targettext:"")
   
   <$let currentFilter=`[all[tiddlers]!has[draft.of]has[$(datefield)$]] :filter[$(todofilter)$]`
         filterStart0=`:filter[get<datefield>compare:string:gteq[$(startdate)$]]`
 	filterEnd0=`:filter[get<datefield>compare:string:lteq[$(enddate)$]]`
 	filterPriority0=`:filter[get[priority]else[0]compare:integer:gteq[$(minpriority)$]]`
-	filterText0=`:filter[search[$(targettext)$]]`
+	filterText0=`:filter[search:caption[$(targettext)$]]`
   >
     <$set name="filterStart" filter="[<startdate>] :filter[length[]compare:integer:gt[0]] :then[<filterStart0>]">
       <$set name="filterEnd" filter="[<enddate>] :filter[length[]compare:integer:gt[0]] :then[<filterEnd0>]">
         <$set name="filterPriority" filter="[<minpriority>] :filter[length[]compare:integer:gt[0]] :then[<filterPriority0>]">
           <$set name="filterText" filter="[<targettext>] :filter[length[]compare:integer:gt[1]] :then[<filterText0>]">
             <$let currentFilter=`$(currentFilter)$ $(filterStart)$ $(filterEnd)$ $(filterPriority)$ $(filterText)$`
-                  filterMonth=`$(currentFilter)$ :map[get[$(datefield)$]format:date[YYYY0MM]] +[unique[]sort[]]`
+                  filterMonth=`$(currentFilter)$ :map[get[$(datefield)$]format:date[YYYY0MM]] $(sortfilter)$`
             >
 
               <$list filter=<<filterMonth>> variable="dateprefix">
@@ -93,7 +93,7 @@ type: text/vnd.tiddlywiki
                   </$list>
                 </div>
 
-                    <$list filter=`$(currentFilter)$ :filter[get[$(datefield)$]prefix[$(dateprefix)$]] :map[get[$(datefield)$]format:date[YYYY0MM0DD]] +[unique[]sort[]]` variable="day">
+                    <$list filter=`$(currentFilter)$ :filter[get[$(datefield)$]prefix[$(dateprefix)$]] :map[get[$(datefield)$]format:date[YYYY0MM0DD]] $(sortfilter)$` variable="day">
                       <dl>
                         <div class="py-todo-list-formatted-day">
                           <dt> <$list filter="[<day>format:date[DDD DD]]" variable="formattedday"> <<formattedday>> </$list> </dt>
