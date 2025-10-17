@@ -1,0 +1,28 @@
+caption: {{$:/plugins/nico/projectify/images/archive}} {{$:/language/projectify/Past}}
+created: 20251017193230404
+list-after: $:/plugins/nico/projectify/ui/dashboard/Today
+modified: 20251017180541537
+tags: $:/plugins/nico/projectify/tags/dashboard
+title: $:/plugins/nico/projectify/ui/dashboard/Past
+type: text/vnd.tiddlywiki
+
+\define lingo-base() $:/language/projectify/
+
+
+<$vars filtersStateTiddler=<<qualify "$:/state/projectify/PastListFilters">> showProjectLinks="yes">
+    <$tiddler tiddler=<<filtersStateTiddler>> >
+      <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/>
+    </$tiddler>
+
+  <$set name="priorityFilter" filter="[<filtersStateTiddler>get[priority]]" >
+  <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" >
+  <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" >
+  <$set name="textQuery" filter="[<filtersStateTiddler>get[text.query]]" >
+
+    <$transclude $variable="py-todo-list-rich-filters" todofilter="tag[done]" datefield="done.date" sortfilter="+[unique[]!sort[]]" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> targettext=<<textQuery>>/>
+      
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+</$vars>
