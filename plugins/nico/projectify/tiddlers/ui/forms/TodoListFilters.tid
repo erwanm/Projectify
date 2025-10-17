@@ -1,0 +1,38 @@
+created: 20250927175047050
+modified: 20250927175047050
+tags:
+title: $:/plugins/nico/projectify/ui/forms/TodoListFilters
+type: text/vnd.tiddlywiki
+
+
+\procedure pick-a-date(text fieldname popuptiddler)
+  <$button class="py-btn" popup=<<popuptiddler>>>
+    <$list filter="[all[current]!has<fieldname>]"
+     emptyMessage="""<$view field=<<fieldname>> format="date" template={{$:/language/projectify/DateFormat}}/>""">
+     <<text>>
+    </$list>
+  </$button>
+  <$reveal state=<<popuptiddler>> type="popup" position="belowleft" animate="no">
+    <div class="tc-drop-down py-drop-down py-date-picker">
+      <$py-date-calendar field=<<fieldname>> />
+      <hr/>
+      <$py-date-clear field=<<fieldname>> >{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>
+    </div>
+  </$reveal>
+\end
+
+
+\define lingo-base() $:/language/projectify/
+
+<div class="py-quick-filters">
+  &nbsp;
+  <span class="py-quick-filters-actions">
+     <<lingo Search>> <$edit-text size=12 field="text.query"/>&ensp;&ensp;&ensp;&ensp;
+     <<lingo Priority/Hint>> ≥ &nbsp; <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>&ensp;&ensp;&ensp;&ensp;
+     <<lingo From>> <$transclude $variable="pick-a-date" text="date" fieldname="from.date" popuptiddler=<<qualify "$:/temp/projectify/TodoListFilters-pick-a-date-from">>/>
+     <<lingo To>> <$transclude $variable="pick-a-date" text="date" fieldname="to.date" popuptiddler=<<qualify "$:/temp/projectify/TodoListFilters-pick-a-date-to">>/>
+    </span>
+
+
+
+  </div>
