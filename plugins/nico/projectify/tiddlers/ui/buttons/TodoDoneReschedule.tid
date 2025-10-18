@@ -1,0 +1,17 @@
+created: 20240518135048294
+modified: 20240518135048294
+tags:
+title: $:/plugins/nico/projectify/ui/buttons/TodoDoneReschedule
+type: text/vnd.tiddlywiki
+
+<$vars popupTiddlerDoneReschedule=<<qualify "$:/state/projectify/done-reschedule-dropdown">>>
+  <$button class="tc-btn-invisible" popup=<<popupTiddlerDoneReschedule>>>
+     <span class="done"> {{$:/plugins/nico/projectify/images/calendar}}</span>
+      <<lingo DoneAndReschedule>>
+  </$button>
+  <$reveal state=<<popupTiddlerDoneReschedule>> type="popup" position="belowright" animate="no">
+    <div class="tc-drop-down py-drop-down py-date-picker">
+     {{||$:/plugins/nico/projectify/ui/forms/DoneReschedule}}
+    </div>
+  </$reveal>
+</$vars>

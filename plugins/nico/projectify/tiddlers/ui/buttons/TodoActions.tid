@@ -25,6 +25,8 @@ type: text/vnd.tiddlywiki
 
       {{||$:/plugins/nico/projectify/ui/buttons/TodoDoneDate}}
 
+      {{||$:/plugins/nico/projectify/ui/buttons/TodoDoneReschedule}}
+
       {{||$:/plugins/nico/projectify/ui/buttons/TodoRename}}
 
       {{||$:/plugins/nico/projectify/ui/forms/TodoConvert}}
