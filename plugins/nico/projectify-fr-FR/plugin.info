@@ -4,7 +4,7 @@
 	"plugin-type": "plugin",
 	"description": "Projectify Français (France)",
 	"parent-plugin": "$:/plugins/nico/projectify",
-	"author": "NicolasPetton",
-	"version": "0.16.1",
+	"author": "NicolasPetton,ErwanMoreau",
+	"version": "0.17.0",
 	"core-version": ">=5.3.1"
 }

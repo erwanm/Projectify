@@ -5,7 +5,21 @@ tags:
 title: $:/plugins/nico/projectify/changelog
 type: text/vnd.tiddlywiki
 
+! Release 0.17.0
 
+!! Improvements
+
+* Added Past tab to dashboard for browsing done tasks
+* Rich filtering options now available in Upcoming and Past tabs
+* New option: mark as done and immediately reschedule the same task
+* Easier customization of the dashboards tabs in Projectify config tab
+* Documentation: improved explanation about recurring todos mechanism
+	
+!! Fixes
+
+* Fixed a bug causing the due date not to be stored if confirmation is not required
+* Fixed a bug: clearing "done date" did not remove done tags or done.date field as expected
+	
 ! Release 0.16.1
 
 !! Improvements

@@ -1,6 +1,6 @@
 {
 	"name": "projectify",
-	"version": "0.16.1",
+	"version": "0.17.0",
 	"description": "Project and todo management in TiddlyWiki",
 	"main": "index.js",
 	"scripts": {
@@ -31,7 +31,7 @@
 		"project-management",
 		"todo-list"
 	],
-	"author": "Nicolas Petton",
+    "author": "Nicolas Petton, Erwan Moreau",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/erwanm/projectify/issues"
