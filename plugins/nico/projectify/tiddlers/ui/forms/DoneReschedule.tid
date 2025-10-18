@@ -6,9 +6,6 @@ type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
-<$py-date-today>{{$:/plugins/nico/projectify/images/sun}} <<lingo Today>></$py-date-today>
-<$py-date-tomorrow>{{$:/plugins/nico/projectify/images/calendar-event}} <<lingo Tomorrow>></$py-date-tomorrow>
-<$py-date-next-week>{{$:/plugins/nico/projectify/images/calendar}} <<lingo NextWeek>></$py-date-next-week>
-<$py-date-clear>{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>
-<hr/>
+<$py-date-tomorrow field="nextdate" actions="<<py-mark-as-done>>">{{$:/plugins/nico/projectify/images/calendar-event}} <<lingo Tomorrow>></$py-date-tomorrow>
+<$py-date-next-week field="nextdate" actions="<<py-mark-as-done>>">{{$:/plugins/nico/projectify/images/calendar}} <<lingo NextWeek>></$py-date-next-week>
 <$py-date-calendar  field="nextdate" actions="<<py-mark-as-done>>"/>

@@ -66,6 +66,7 @@ type: text/vnd.tiddlywiki
       <$action-setfield $tiddler=<<createTiddler-title>> due=<<nextdate>>/>
       <$action-setfield $tiddler=<<createTiddler-title>> due.initial=<<nextdate>>/>
       <$action-setfield $tiddler=<<createTiddler-title>> caption=<<newTitle>>/>
+      <$action-deletefield $tiddler=<<createTiddler-title>> done.date nextdate />
       <$action-listops $tiddler=<<createTiddler-title>> $field="tags" $subfilter="-done"/>
     </$action-createtiddler>
   </$set>
