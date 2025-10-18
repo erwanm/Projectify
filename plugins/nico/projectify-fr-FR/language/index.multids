@@ -96,3 +96,18 @@ NextDueDateBasedOn: Prochaine date limite basée sur:
 CurrentDueDate: la date limite actuelle
 InitialDueDate: la date limite d'origine
 CurrentDate: la date du jour
+DoneOn: Fait le ...
+RenameTodo: Renommer ...
+ConfirmNextRecurringDate: Confirmez la prochaine date limite:    
+ConfirmationRequired: Confirmation requise
+ConfirmNextRecurringDateOption: Confirmation requise pour la prochaine date limite
+ExceptOnDueDate: Oui, sauf à la date
+yes: Oui
+no: Non
+SelectDashboardTabs: Selectionnez les onglets actifs
+OrderDashboardTabs: Choisissez l'ordre des onglets (par glisser-déposer)
+From: De
+To: à
+Search: Recherche
+Past: FIXLANG Passé
+

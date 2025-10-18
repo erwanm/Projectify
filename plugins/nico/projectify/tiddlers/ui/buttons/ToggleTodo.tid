@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
 
 <$list filter=<<py-is-todo>>>
   <span class="py-toggle-todo-button">
-    <$checkbox tag="done" checkactions=<<py-mark-as-done>> uncheckactions=<<py-unmark-as-done>>>
+    <$checkbox tag="done" checkactions=<<py-mark-as-done>> uncheckactions=<<py-unmark-as-done-and-check-recurring>>>
       {{||$:/plugins/nico/projectify/ui/buttons/Checkbox}}
     </$checkbox>
   </span>

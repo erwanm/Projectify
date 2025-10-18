@@ -99,3 +99,15 @@ CurrentDate: current date
 DoneOn: Done on the ...
 RenameTodo: Rename ...
 DoneAndReschedule: Done + reschedule ...
+ConfirmNextRecurringDate: Please confirm the next due date:    
+ConfirmationRequired: Confirmation required
+ConfirmNextRecurringDateOption: Confirmation required for next due date
+ExceptOnDueDate: Yes, except on due date
+yes: Yes
+no: No
+SelectDashboardTabs: Select active tabs
+OrderDashboardTabs: Choose the order of the tabs (drag and drop)
+From: From
+To: to
+Search: Search
+Past: Past

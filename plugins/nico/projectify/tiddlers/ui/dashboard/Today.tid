@@ -1,23 +1,37 @@
-caption: {{$:/plugins/nico/projectify/images/sun}} {{$:/language/projectify/Today}} {{$:/plugins/nico/projectify/ui/dashbaord/TodayCount}}
+caption: {{$:/plugins/nico/projectify/images/sun}} {{$:/language/projectify/Today}} {{$:/plugins/nico/projectify/ui/dashboard/TodayCount}}
 created: 20210107213438937
 list-after: $:/plugins/nico/projectify/ui/dashboard/InboxAndProjects
 modified: 20210112180541507
-tags: 
-title: $:/plugins/nico/projectify/ui/dashbaord/Today
+tags: $:/plugins/nico/projectify/tags/dashboard
+title: $:/plugins/nico/projectify/ui/dashboard/Today
 type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
-<$vars showProjectLinks="yes">
-  <$list filter=<<py-has-overdue-todos>>>
-    <dl>
-      <dt><<lingo Overdue>></dt>
-      <dd><<py-schedule-overdue>></dd>
-    </dl>
-  </$list>
+<$vars priorityFilterStateTiddler="$:/config/projectify/TodayPriorityFilter" showProjectLinks="yes">
+ 
+  <div class="py-quick-filters">
+    &nbsp;
+    <span class="py-quick-filters-actions">
+      <$tiddler tiddler=<<priorityFilterStateTiddler>> >
+        Priority ≥ &nbsp; <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoPriority" mode="inline"/>
+      </$tiddler>
+    </span>
+  </div>
 
-  <dl>
-    <dt><<lingo Today>></dt>
-    <dd><<py-schedule-today>></dd>
-  </dl>
+  <$set name="priorityFilter" filter="[<priorityFilterStateTiddler>get[priority]]" emptyValue="0" >
+
+      <$list filter=<<py-has-overdue-todos>>>
+        <dl>
+	  <dt><<lingo Overdue>> </dt>
+	  <dd><$transclude $variable="py-schedule-overdue-and-priority-higher-than" p=<<priorityFilter>> /></dd>
+        </dl>
+      </$list>
+
+    <dl>
+      <dt><<lingo Today>></dt>
+      <dd><$transclude $variable="py-schedule-today-and-priority-higher-than" p=<<priorityFilter>> /></dd>
+    </dl>
+  
+  </$set>
 </$vars>

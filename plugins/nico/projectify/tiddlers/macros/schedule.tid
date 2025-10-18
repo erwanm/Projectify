@@ -6,26 +6,30 @@ type: text/vnd.tiddlywiki
 
 \whitespace trim
 
-\define py-schedule-overdue()
+\define py-schedule-overdue-and-priority-higher-than(p:"0")
   <$list
-    filter=<<py-todos-overdue>>
+    filter=[function[py-todos-overdue-and-priority-higher-than],[$p$]]
     template="$:/plugins/nico/projectify/ui/todo/TodoItem"
   />
 \end
 
-\define py-schedule-day(day)
-  <$vars day=<<__day__>>>
+
+\procedure py-schedule-day-with-priority-higher-than(day,p:0)
+  <$vars day=<<__day__>> >
     <$list
-      filter=<<py-todos-due-on>>
+      filter="[function[py-todos-due-on-and-priority-higher-than],<p>]"
       template="$:/plugins/nico/projectify/ui/todo/TodoItem"
       />
   </$vars>
 \end
 
-\define py-schedule-today()
-  <$list
-    filter=<<py-todos-due-today>>
-    template="$:/plugins/nico/projectify/ui/todo/TodoItem"
-    emptyMessage="🌞 {{$:/language/projectify/AllClear}}"
-  />
-\end  
+
+\procedure py-schedule-today-and-priority-higher-than(p:0)
+    <$list
+      filter="[function[py-todos-due-today-and-priority-higher-than],<p>]"
+      template="$:/plugins/nico/projectify/ui/todo/TodoItem"
+      emptyMessage="🌞 {{$:/language/projectify/AllClear}}"
+    />
+\end
+
+

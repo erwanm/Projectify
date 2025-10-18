@@ -113,6 +113,16 @@ type: text/vnd.tiddlywiki
   border: none;
 }
 
+.py-quick-filters-actions {
+  float: right;
+  font-size: .8em;
+  font-style: italic;
+}
+
+.py-quick-filters {
+  border: none;
+}
+
 .py-todo .py-project-link {
   font-size: .8em;
   color: #aaa;
@@ -327,3 +337,18 @@ type: text/vnd.tiddlywiki
   padding:4px;
 }
 
+.py-todo-list-formatted-month {
+  font-weight: bold;
+  font-size: 24px;
+  padding-top: 1em;
+  border-top: 3px dotted ;
+  text-align: center;
+  color: #555555;
+}
+
+.py-todo-list-formatted-day {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: #EEEEEE;
+  color: #555555;
+}

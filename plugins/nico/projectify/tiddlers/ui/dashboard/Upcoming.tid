@@ -1,30 +1,33 @@
 caption: {{$:/plugins/nico/projectify/images/calendar-checked}} {{$:/language/projectify/Upcoming}}
 created: 20200424193230404
-list-after: $:/plugins/nico/projectify/ui/dashbaord/Today
+list-after: $:/plugins/nico/projectify/ui/dashboard/InboxAndProjects
 modified: 20210112180541537
 tags: $:/plugins/nico/projectify/tags/dashboard
-title: $:/plugins/nico/projectify/ui/dashbaord/Upcoming
+title: $:/plugins/nico/projectify/ui/dashboard/Upcoming
 type: text/vnd.tiddlywiki
 
 \define lingo-base() $:/language/projectify/
 
-<$vars showProjectLinks="yes">
-  <$list
-    filter=<<py-has-scheduled-todos-in-projects>>
-    emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
-  >
-    <$list filter=<<py-has-overdue-todos>>>
-      <dl>
-	<dt><<lingo Overdue>></dt>
-	<dd><<py-schedule-overdue>></dd>
-      </dl>
-    </$list>
 
-    <$list filter=<<py-upcoming-due-dates>>>
-      <dl>
-	<dt>{{||$:/plugins/nico/projectify/ui/dashboard/Date}}</dt>
-	<dd><$macrocall $name="py-schedule-day" day={{!!due}}/></dd>
-      </dl>
+<$vars filtersStateTiddler=<<qualify "$:/state/projectify/UpcomingListFilters">> showProjectLinks="yes">
+    <$tiddler tiddler=<<filtersStateTiddler>> >
+      <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/>
+    </$tiddler>
+
+  <$set name="priorityFilter" filter="[<filtersStateTiddler>get[priority]]" >
+  <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" >
+  <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" >
+  <$set name="textQuery" filter="[<filtersStateTiddler>get[text.query]]" >
+    <$list
+      filter="[function[py-has-scheduled-todos-in-projects-with-priority-higher-than],<priorityFilter>]"
+      emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
+    >
+
+      <$transclude $variable="py-todo-list-rich-filters" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> targettext=<<textQuery>>/>
+      
     </$list>
-  </$list>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
 </$vars>

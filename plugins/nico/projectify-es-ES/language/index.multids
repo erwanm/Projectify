@@ -96,3 +96,17 @@ NextDueDateBasedOn: FIXLANG Next due date calculated based on:
 CurrentDueDate: FIXLANG current due date
 InitialDueDate: FIXLANG initial due date
 CurrentDate: FIXLANG current date
+DoneOn: FIXLANG Done ...
+RenameTodo: FIXLANG Rename ...
+ConfirmNextRecurringDate: FIXLANG Please confirm the next due date:    
+ConfirmationRequired: FIXLANG Confirmation required
+ConfirmNextRecurringDateOption: FIXLANG Confirmation required for next due date
+ExceptOnDueDate: FIXLANG Yes, except on due date
+yes: FIXLANG Yes
+no: FIXLANG No
+SelectDashboardTabs: FIXLANG Select active tabs
+OrderDashboardTabs: FIXLANG Choose the order of the tabs (drag and drop)
+From: FIXLANG From
+To: FIXLANG to
+Search: FIXLANG Search
+Past: FIXLANG Past

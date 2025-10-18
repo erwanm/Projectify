@@ -1,6 +1,6 @@
 created: 20210108114443405
 modified: 20210108114747271
-title: $:/plugins/nico/projectify/ui/dashbaord/TodayCount
+title: $:/plugins/nico/projectify/ui/dashboard/TodayCount
 type: text/vnd.tiddlywiki
 
 <$list filter=<<py-has-todos-due-today-or-overdue>>>

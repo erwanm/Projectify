@@ -1,0 +1,20 @@
+created: 20241207165347344
+modified: 20241209210842918
+title: $:/plugins/nico/projectify/ui/forms/ConfirmNextDate
+type: text/vnd.tiddlywiki
+footer: <$tiddler tiddler=<<sourceTiddler>>> <$button message="tm-close-tiddler"> <<py-unmark-as-done>> Cancel </$button> <$button message="tm-close-tiddler"> <<trigger-recurring>> OK </$button> </$tiddler>
+subtitle: <<lingo ConfirmationRequired>>
+mask-closable: false
+
+\define lingo-base() $:/language/projectify/
+
+
+<div class="py-todo-actions">
+  <$tiddler tiddler=<<stateTiddler>>>
+    <<lingo ConfirmNextRecurringDate>> <$transclude tiddler="$:/plugins/nico/projectify/ui/buttons/TodoDueDate" mode="inline"/>
+  </$tiddler>
+</div>
+
+
+
+	

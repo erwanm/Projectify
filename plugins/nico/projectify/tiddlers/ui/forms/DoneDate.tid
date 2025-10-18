@@ -8,4 +8,5 @@ type: text/vnd.tiddlywiki
 
 <$py-date-calendar field="done.date" actions="<<py-mark-as-done>>"/>
 <hr/>
-<$py-date-clear>{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>
+<$py-date-clear field="done.date">{{$:/plugins/nico/projectify/images/slash-circle}} <<lingo Clear>></$py-date-clear>
+

@@ -5,3 +5,8 @@ ShowWelcomeMessages: yes
 ShowCompletedTodos: no
 FirstDayOfWeek: 1
 NextRecurringBasedOnField: due
+ConfirmNextRecurringDate: no
+UpcomingPriorityFilter: 0
+TodayPriorityFilter: 0
+ActiveDashboardTabs: [[$:/plugins/nico/projectify/ui/dashboard/InboxAndProjects]] [[$:/plugins/nico/projectify/ui/dashboard/Upcoming]] [[$:/plugins/nico/projectify/ui/NextActions]] [[$:/plugins/nico/projectify/ui/dashboard/Today]] [[$:/plugins/nico/projectify/ui/dashboard/Past]]
+DefaultDashboardTab: $:/plugins/nico/projectify/ui/dashboard/InboxAndProjects

@@ -4,14 +4,24 @@ tags: [[Projectify documentation]]
 title: $:/plugins/nico/projectify/doc/RecurringTodos
 type: text/vnd.tiddlywiki
 
-One often has to do some things on a regular basis, for example one may want to perform a full backup every month. Projectify lets you create a **recurring todo**, programed to repeat every N units of time, possibly until a specific date.
+Some tasks need to be repeated on a regular basis, for example one may want to perform a full backup every month. Projectify lets you create a **recurring todo**, programed to repeat every N units of time, optionally until a specific date.
 
 To create a recurring todo, click the {{$:/plugins/nico/projectify/images/entypo/cycle}} button and select the required time interval.
 
-The next todo will be generated automatically when the current one is marked as done.
+The next todo will be generated automatically when the current one is marked as done. In the current implementation, it is not possible to generate multiple future todos, only the next one appears when the last one has been done.
+
+!!! Option to control the next due date 
 
 By default the next due date is calculated based on the current todo due date, but this can be configured from the ''Projectify'' tab of the  [[Control panel|$:/ControlPanel]]:
 
 * By default, if the current due date is modified, for example the todo is postponed by 3 days, then the due date of the next todo will also be postponed by three days.
 * But if the option "initial due date" is selected, then the due date of the next todo will not change, even if the current due date is modifled.
 * If the option "current date" is selected, then the next due date is calculated from the current date when the todo is marked as done, instead of the previous due date.
+
+!! Option to confirm the next due date
+
+By default, the next todo is created without asking the user for confirmation. This can be configured from the ''Projectify'' tab of the  [[Control panel|$:/ControlPanel]] with the option "Confirm next recurring date":
+
+* It is set to "no" by default.
+* In order to always let the user confirm and possibly change the next due date, select "yes".
+* The choice "Except on due date" also asks the user to confirm, but only if if the current date is different than the previous due date. 

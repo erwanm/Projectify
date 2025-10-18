@@ -1,5 +1,5 @@
 created: 20231001180300123
-modified: 20231001180300123
+modified: 20250513180300123
 tags: $:/plugins/nico/projectify/tags/Config
 title: $:/plugins/nico/projectify/ui/config/RecurringTodos
 list-after: $:/plugins/nico/projectify/ui/config/Categories
@@ -17,5 +17,16 @@ caption: {{$:/language/projectify/RecurringTask}}
 </$select>
 \end
 
+\define select-option-confirm-next-date()
+
+<$select tiddler="$:/config/projectify/ConfirmNextRecurringDate">
+  <option value="no"><<lingo no>></option>
+  <option value="yes"><<lingo yes>></option>
+  <option value="except_on_due_date"><<lingo ExceptOnDueDate>></option>
+</$select>
+\end
+
+
 |<<lingo NextDueDateBasedOn>> |<<select-option-calc-next-date>> |
+|<<lingo ConfirmNextRecurringDateOption>> |<<select-option-confirm-next-date>> |
 

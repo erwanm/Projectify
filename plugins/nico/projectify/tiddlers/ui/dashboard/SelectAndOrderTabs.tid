@@ -1,0 +1,34 @@
+created: 20250521161037836
+modified: 20250521161037836
+title: $:/plugins/nico/projectify/ui/dashboard/SelectAndOrderTabs
+type: text/vnd.tiddlywiki
+
+\define lingo-base() $:/language/projectify/
+
+\procedure select-list-tiddlers(tiddlerContainingList listFieldName allPossibleTiddlersFilter)
+  <$list filter=<<allPossibleTiddlersFilter>> >
+    <$checkbox tiddler=<<tiddlerContainingList>> listField=<<listFieldName>> checked=<<currentTiddler>> />
+    <$link>
+    <$list filter="[all[current]has[caption]]">
+      <$transclude field="caption" />
+    </$list>
+    <$list filter="[all[current]!has[caption]]">
+      {{!!title}}
+    </$list>
+    </$link>
+    <br />
+  </$list>
+\end
+
+
+<$vars targetTiddler="$:/config/projectify/ActiveDashboardTabs" targetField="text" filter="[all[tiddlers+shadows]tag[$:/plugins/nico/projectify/tags/dashboard]]">
+
+  <<lingo SelectDashboardTabs>> :<br/>
+  
+  <$transclude $variable="select-list-tiddlers" tiddlerContainingList=<<targetTiddler>> listFieldName=<<targetField>> allPossibleTiddlersFilter=<<filter>> />
+
+  <<lingo OrderDashboardTabs>> :
+  
+  <$transclude $variable=list-links-draggable tiddler=<<targetTiddler>> field=<<targetField>> />
+
+</$vars>
