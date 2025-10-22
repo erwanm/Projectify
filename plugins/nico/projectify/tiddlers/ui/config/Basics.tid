@@ -22,6 +22,16 @@ caption: {{$:/language/ControlPanel/Basics/Caption}}
 </$select>
 \end
 
+\define max-list-size()
+<div class="py-quick-filters">
+  <span class="py-quick-filters">
+     <$edit-text tag=input size=5 tiddler="$:/config/projectify/MaxTodoFilteredList" />
+  </span>
+  </div>
+\end
+
+
 |<<lingo ShowWelcomeMessages>> |<<select-show-welcome-messages>> |
 |<<lingo ShowCompletedTodosByDefault>> |<<select-show-completed-todos>> |
+|<<lingo MaxListSizeOrAll>> | <<max-list-size>> |
 

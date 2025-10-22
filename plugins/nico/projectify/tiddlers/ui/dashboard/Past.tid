@@ -18,9 +18,10 @@ type: text/vnd.tiddlywiki
   <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" >
   <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" >
   <$set name="textQuery" filter="[<filtersStateTiddler>get[text.query]]" >
-
-    <$transclude $variable="py-todo-list-rich-filters" todofilter="tag[done]" datefield="done.date" sortfilter="+[unique[]!sort[]]" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> targettext=<<textQuery>>/>
-      
+  <$set name="showMax" filter="[<filtersStateTiddler>get[show.max]]" emptyValue={{$:/config/projectify/MaxTodoFilteredList}}>
+ 
+    <$transclude $variable="py-todo-list-rich-filters" todofilter="tag[done]" datefield="done.date" sortfilter="+[!sort[done.date]]" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> targettext=<<textQuery>> showmax=<<showMax>> />
+  </$set>
   </$set>
   </$set>
   </$set>
