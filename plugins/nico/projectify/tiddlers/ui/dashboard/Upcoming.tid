@@ -18,14 +18,16 @@ type: text/vnd.tiddlywiki
   <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" >
   <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" >
   <$set name="textQuery" filter="[<filtersStateTiddler>get[text.query]]" >
+  <$set name="showMax" filter="[<filtersStateTiddler>get[show.max]]" emptyValue={{$:/config/projectify/MaxTodoFilteredList}}>
     <$list
       filter="[function[py-has-scheduled-todos-in-projects-with-priority-higher-than],<priorityFilter>]"
       emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
     >
 
-      <$transclude $variable="py-todo-list-rich-filters" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> targettext=<<textQuery>>/>
+      <$transclude $variable="py-todo-list-rich-filters" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> targettext=<<textQuery>> showmax=<<showMax>> />
       
     </$list>
+  </$set>
   </$set>
   </$set>
   </$set>
