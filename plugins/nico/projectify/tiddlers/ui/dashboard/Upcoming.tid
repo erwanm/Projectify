@@ -1,7 +1,7 @@
 caption: {{$:/plugins/nico/projectify/images/calendar-checked}} {{$:/language/projectify/Upcoming}}
 created: 20200424193230404
 list-after: $:/plugins/nico/projectify/ui/dashboard/InboxAndProjects
-modified: 20210112180541537
+modified: 2025102240541537
 tags: $:/plugins/nico/projectify/tags/dashboard
 title: $:/plugins/nico/projectify/ui/dashboard/Upcoming
 type: text/vnd.tiddlywiki
@@ -10,26 +10,22 @@ type: text/vnd.tiddlywiki
 
 
 <$vars filtersStateTiddler=<<qualify "$:/state/projectify/UpcomingListFilters">> showProjectLinks="yes">
-    <$tiddler tiddler=<<filtersStateTiddler>> >
-      <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/>
-    </$tiddler>
+  <$tiddler tiddler=<<filtersStateTiddler>> >
 
-  <$set name="priorityFilter" filter="[<filtersStateTiddler>get[priority]]" >
-  <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" >
-  <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" >
-  <$set name="textQuery" filter="[<filtersStateTiddler>get[text.query]]" >
-  <$set name="showMax" filter="[<filtersStateTiddler>get[show.max]]" emptyValue={{$:/config/projectify/MaxTodoFilteredList}}>
+    <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/>
+
     <$list
       filter="[function[py-has-scheduled-todos-in-projects-with-priority-higher-than],<priorityFilter>]"
       emptyMessage={{$:/plugins/nico/projectify/ui/welcome/EmptyUpcoming}}
+      variable="unused"
     >
-
-      <$transclude $variable="py-todo-list-rich-filters" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> targettext=<<textQuery>> showmax=<<showMax>> />
-      
+      <let todofilter="tag[todo]!tag[done]"
+           datefield="due"
+	   sortfilter="+[sort[due]]"
+      >
+        <$transclude $variable="generic-todo-list-rich-filters" callbackproc="todo-list-rich-filters-core" />
+      </$let>
     </$list>
-  </$set>
-  </$set>
-  </$set>
-  </$set>
-  </$set>
+
+  </$tiddler>
 </$vars>
