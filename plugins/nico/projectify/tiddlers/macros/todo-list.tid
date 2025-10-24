@@ -79,10 +79,10 @@ type: text/vnd.tiddlywiki
 	filterText0=`:filter[search:caption[$(targettext)$]]`
 	filterMax0=`+[first[$(showmax)$]]`
   >
-    <$set name="filterStart" filter="[<startdate>] :filter[length[]compare:integer:gt[0]] :then[<filterStart0>]">
-      <$set name="filterEnd" filter="[<enddate>] :filter[length[]compare:integer:gt[0]] :then[<filterEnd0>]">
-        <$set name="filterPriority" filter="[<minpriority>] :filter[length[]compare:integer:gt[0]] :then[<filterPriority0>]">
-          <$set name="filterText" filter="[<targettext>] :filter[length[]compare:integer:gt[1]] :then[<filterText0>]">
+    <$set name="filterStart" filter="[<startdate>] :filter[minlength[1]] :then[<filterStart0>]">
+      <$set name="filterEnd" filter="[<enddate>] :filter[minlength[1]] :then[<filterEnd0>]">
+        <$set name="filterPriority" filter="[<minpriority>] :filter[minlength[1]] :then[<filterPriority0>]">
+          <$set name="filterText" filter="[<targettext>] :filter[minlength[2]] :then[<filterText0>]">
 	    <$set name="filterMax" filter="[<showmax>] :filter[!match[all]] :then[<filterMax0>]"> 
               <$let currentFilter=`$(currentFilter)$ $(filterStart)$ $(filterEnd)$ $(filterPriority)$ $(filterText)$ $(sortfilter)$`
 	          filterSortedDates=`$(currentFilter)$ $(filterMax)$ :map[get[$(datefield)$]format:date[YYYY0MM0DD]] +[unique[]]`
