@@ -9,21 +9,27 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 
-<$vars filtersStateTiddler=<<qualify "$:/state/projectify/PastListFilters">> showProjectLinks="yes">
-    <$tiddler tiddler=<<filtersStateTiddler>> >
-      <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/>
-    </$tiddler>
+<$vars filtersStateTiddler=<<qualify "$:/state/projectify/UpcomingListFilters">> showProjectLinks="yes">
+  <$tiddler tiddler=<<filtersStateTiddler>> >
 
-  <$set name="priorityFilter" filter="[<filtersStateTiddler>get[priority]]" >
-  <$set name="fromDate" filter="[<filtersStateTiddler>get[from.date]]" >
-  <$set name="toDate" filter="[<filtersStateTiddler>get[to.date]]" >
-  <$set name="textQuery" filter="[<filtersStateTiddler>get[text.query]]" >
-  <$set name="showMax" filter="[<filtersStateTiddler>get[show.max]]" emptyValue={{$:/config/projectify/MaxTodoFilteredList}}>
- 
-    <$transclude $variable="py-todo-list-rich-filters" todofilter="tag[done]" datefield="done.date" sortfilter="+[!sort[done.date]]" startdate=<<fromDate>> enddate=<<toDate>> minpriority=<<priorityFilter>> targettext=<<textQuery>> showmax=<<showMax>> />
-  </$set>
-  </$set>
-  </$set>
-  </$set>
-  </$set>
+    <$let todofilter="tag[done]"
+          datefield="done.date"
+          sortfilter="+[sort[done.date]]"
+    >
+
+      <$let fromDate={{!!from.date}} toDate={{!!to.date}} priority={{!!priority}} textQuery={{!!text.query}} > 
+
+        <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/>
+
+        <$transclude $variable="generic-todo-list-rich-filters" callbackproc="todo-list-rich-filters-core" />
+
+      </$let>
+    </$let>
+
+  </$tiddler>
 </$vars>
+
+
+
+
+ 

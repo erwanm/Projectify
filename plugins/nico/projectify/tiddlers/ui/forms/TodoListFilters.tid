@@ -21,14 +21,6 @@ type: text/vnd.tiddlywiki
   </$reveal>
 \end
 
-\procedure show-all-checkbox()
-  <$set name="maxConfig" filter="[all[current]{$:/config/projectify/MaxTodoFilteredList}]" emptyValue="100">
-    <$list filter="[<maxConfig>!match[all]]" variable="unused">
-      <$checkbox field="show.max" checked="all" unchecked=<<maxConfig>> default=<<maxConfig>> > <<lingo ShowAll>> </$checkbox>
-    </$list>
-  </$set>
-\end
-
 
 \define lingo-base() $:/language/projectify/
 
@@ -40,10 +32,7 @@ type: text/vnd.tiddlywiki
      <<lingo From>> <$transclude $variable="pick-a-date" text="date" fieldname="from.date" popuptiddler=<<qualify "$:/temp/projectify/TodoListFilters-pick-a-date-from">>/>
      <<lingo To>> <$transclude $variable="pick-a-date" text="date" fieldname="to.date" popuptiddler=<<qualify "$:/temp/projectify/TodoListFilters-pick-a-date-to">>/>&ensp;&ensp;
 
-     <<show-all-checkbox>>&ensp;&ensp;
+      <$transclude $variable="generic-todo-list-rich-filters" callbackproc="todo-list-rich-filters-show-max-control" />
 
 </span>
-
-
-
-  </div>
+</div>
