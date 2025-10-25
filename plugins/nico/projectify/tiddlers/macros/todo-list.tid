@@ -112,7 +112,7 @@ type: text/vnd.tiddlywiki
                   <dt> <$list filter="[<day>format:date[DDD DD]]" variable="formattedday"> <<formattedday>> </$list> </dt>
                 </div>
                 <dd>
-                  <$list filter=`$(currentFilter)$ :filter[get[$(datefield)$]prefix[$(day)$]]`
+                  <$list filter=`$(currentFilter)$ $(filterMax)$ :filter[get[$(datefield)$]prefix[$(day)$]]`
 		         template="$:/plugins/nico/projectify/ui/todo/TodoItem"
 			 />
                 </dd>
