@@ -129,18 +129,17 @@ type: text/vnd.tiddlywiki
 
 \procedure todo-list-rich-filters-show-max-control()
 
-
   <$set name="maxConfig" filter="[all[current]{$:/config/projectify/MaxTodoFilteredList}]" emptyValue="100">
-    <$list filter="[<maxConfig>match[all] <maxConfig>]" variable="unused">
+    <$list filter="[<maxConfig>match[all]]" variable="unused">
       <$checkbox disabled="yes" class="disabled" field="show.max" checked="all" unchecked=<<maxConfig>> default=<<maxConfig>> > <<lingo ShowAll>> </$checkbox>
     </$list>
     <$list filter="[<maxConfig>!match[all]]" variable="unused">
       <$let filterCount=`$(currentFilter)$ +[count[]]`>
-        <$list filter=`$(filterCount)$ :map[compare:integer:gt<maxConfig>]`  >
-          <$list filter="[all[current]minlength[1]]">
+        <$list filter=`$(filterCount)$ :map[compare:integer:gt<maxConfig>]`  variable="countOrEmpty">
+          <$list filter="[<countOrEmpty>] +[minlength[1]]" variable="unused2">
             <$checkbox disabled="no" field="show.max" checked="all" unchecked=<<maxConfig>> default=<<maxConfig>> > <<lingo ShowAll>> </$checkbox>
           </$list>
-	  <$list filter="[all[current]count[]compare:integer:eq[0]]">
+	  <$list filter="[<countOrEmpty>] +[length[]compare:integer:eq[0]]" variable="unused2">
             <$checkbox disabled="yes" class="disabled" field="show.max" checked="all" unchecked=<<maxConfig>> default=<<maxConfig>> > <<lingo ShowAll>> </$checkbox>
 	  </$list>
         </$list>
