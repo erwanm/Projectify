@@ -69,80 +69,24 @@ type: text/vnd.tiddlywiki
 \end
 
 
-
-\procedure py-todo-list-rich-filters(todofilter:"tag[todo]!tag[done]" datefield:"due" sortfilter:"+[sort[due]]" startdate:"" enddate:"" minpriority:"" targettext:"" showmax:"")
-
-  <$let currentFilter=`[all[tiddlers]!has[draft.of]has[$(datefield)$]] :filter[$(todofilter)$]`
-        filterStart0=`:filter[get<datefield>compare:string:gteq[$(startdate)$]]`
-	filterEnd0=`:filter[get<datefield>compare:string:lteq[$(enddate)$]]`
-	filterPriority0=`:filter[get[priority]else[0]compare:integer:gteq[$(minpriority)$]]`
-	filterText0=`:filter[search:caption[$(targettext)$]]`
-	filterMax0=`+[first[$(showmax)$]]`
-  >
-    <$set name="filterStart" filter="[<startdate>] :filter[minlength[1]] :then[<filterStart0>]">
-      <$set name="filterEnd" filter="[<enddate>] :filter[minlength[1]] :then[<filterEnd0>]">
-        <$set name="filterPriority" filter="[<minpriority>] :filter[minlength[1]] :then[<filterPriority0>]">
-          <$set name="filterText" filter="[<targettext>] :filter[minlength[2]] :then[<filterText0>]">
-	    <$set name="filterMax" filter="[<showmax>] :filter[!match[all]] :then[<filterMax0>]"> 
-              <$let currentFilter=`$(currentFilter)$ $(filterStart)$ $(filterEnd)$ $(filterPriority)$ $(filterText)$ $(sortfilter)$`
-	          filterSortedDates=`$(currentFilter)$ $(filterMax)$ :map[get[$(datefield)$]format:date[YYYY0MM0DD]] +[unique[]]`
-                  filterMonth=`$(filterSortedDates)$ :map[format:date[YYYY0MM]] +[unique[]]`
-              >
-
-                <$list filter=<<filterMonth>> variable="dateprefix">
-                  <div class="py-todo-list-formatted-month">
-                    <$list filter="[<dateprefix>addsuffix[01]format:date[MMM YYYY]]" variable="monthyear">
-                      <$text text=<<monthyear>> />
-                    </$list>
-                  </div>
-
-                    <$list filter=`$(filterSortedDates)$ :filter[prefix[$(dateprefix)$]]` variable="day">
-                      <dl>
-                        <div class="py-todo-list-formatted-day">
-                          <dt> <$list filter="[<day>format:date[DDD DD]]" variable="formattedday"> <<formattedday>> </$list> </dt>
-                        </div>
-                        <dd>
-                          <$list filter=`$(currentFilter)$ :filter[get[$(datefield)$]prefix[$(day)$]]`
-			         template="$:/plugins/nico/projectify/ui/todo/TodoItem"
-		          />
-                        </dd>
-                      </dl>
-                    </$list>
-		
-              </$list>
-
-	      </$let>
-      	    </$set>
-	  </$set>
-	</$set>
-      </$set>
-    </$set>
-  </$let>
-
-\end
-
-
 \procedure generic-todo-list-rich-filters(callbackproc: "todo-list-rich-filters-core")
-
-  <$let currentFilter=`[all[tiddlers]!has[draft.of]has[$(datefield)$]] :filter[$(todofilter)$]`
-        filterStart0=`:filter[get<datefield>compare:string:gteq{!!start.date}]`
-	filterEnd0=`:filter[get<datefield>compare:string:lteq{!!end.date}]`
-	filterPriority0=`:filter[get[priority]else[0]compare:integer:gteq{!!priority}]`
-	filterText0=`:filter[search:caption{!!text.query}]`
-  >
-    <$set name="filterStart" filter="[all[current]get[start.date]] :filter[minlength[1]] :then[<filterStart0>]">
-      <$set name="filterEnd" filter="[all[current]get[end.date]] :filter[minlength[1]] :then[<filterEnd0>]">
-        <$set name="filterPriority" filter="[all[current]get[priority]] :filter[minlength[1]] :then[<filterPriority0>]">
-          <$set name="filterText" filter="[all[current]get[text.query]] :filter[minlength[2]] :then[<filterText0>]">
-            <$let currentFilter=`$(currentFilter)$ $(filterStart)$ $(filterEnd)$ $(filterPriority)$ $(filterText)$ $(sortfilter)$`>
-
-	      <$transclude $variable=<<callbackproc>> />
-
-	    </$let>
-	  </$set>
-	</$set>
+    <$let currentFilter=`[all[tiddlers]!has[draft.of]has[$(datefield)$]] :filter[$(todofilter)$]`
+          filterStart0=`:filter[get[$(datefield)$]compare:string:gteq<fromDate>]`
+  	  filterEnd0=`:filter[get[$(datefield)$]compare:string:lteq<toDate>]`
+	  filterPriority0=`:filter[get[priority]else[0]compare:integer:gteq<priority>]`
+	  filterText0=`:filter[search:caption<textQuery>]`
+    >
+      <$set name="filterStart" filter="[<fromDate>] :filter[minlength[1]] :then[<filterStart0>]">
+        <$set name="filterEnd" filter="[<toDate>] :filter[minlength[1]] :then[<filterEnd0>]">
+          <$set name="filterPriority" filter="[<priority>] :filter[minlength[1]] :then[<filterPriority0>]">
+            <$set name="filterText" filter="[<textQuery>] :filter[minlength[2]] :then[<filterText0>]">
+              <$let currentFilter=`$(currentFilter)$ $(filterStart)$ $(filterEnd)$ $(filterPriority)$ $(filterText)$ $(sortfilter)$`>
+  	        <$transclude $variable=<<callbackproc>> />
+	      </$let>
+	    </$set>
+  	  </$set>
+        </$set>
       </$set>
-    </$set>
   </$let>
 \end
 
@@ -168,7 +112,9 @@ type: text/vnd.tiddlywiki
                   <dt> <$list filter="[<day>format:date[DDD DD]]" variable="formattedday"> <<formattedday>> </$list> </dt>
                 </div>
                 <dd>
-                  <$list filter=`$(currentFilter)$ :filter[get[$(datefield)$]prefix[$(day)$]]` template="$:/plugins/nico/projectify/ui/todo/TodoItem" />
+                  <$list filter=`$(currentFilter)$ :filter[get[$(datefield)$]prefix[$(day)$]]`
+		         template="$:/plugins/nico/projectify/ui/todo/TodoItem"
+			 />
                 </dd>
               </dl>
             </$list>
@@ -183,9 +129,10 @@ type: text/vnd.tiddlywiki
 
 \procedure todo-list-rich-filters-show-max-control()
 
+
   <$set name="maxConfig" filter="[all[current]{$:/config/projectify/MaxTodoFilteredList}]" emptyValue="100">
-    <$list filter="[<maxConfig>match[all]]" variable="unused">
-      <$checkbox disabled="yes" field="show.max" checked="all" unchecked=<<maxConfig>> default=<<maxConfig>> > <<lingo ShowAll>> </$checkbox>
+    <$list filter="[<maxConfig>match[all] <maxConfig>]" variable="unused">
+      <$checkbox disabled="yes" class="disabled" field="show.max" checked="all" unchecked=<<maxConfig>> default=<<maxConfig>> > <<lingo ShowAll>> </$checkbox>
     </$list>
     <$list filter="[<maxConfig>!match[all]]" variable="unused">
       <$let filterCount=`$(currentFilter)$ +[count[]]`>
@@ -193,6 +140,9 @@ type: text/vnd.tiddlywiki
           <$list filter="[all[current]minlength[1]]">
             <$checkbox disabled="no" field="show.max" checked="all" unchecked=<<maxConfig>> default=<<maxConfig>> > <<lingo ShowAll>> </$checkbox>
           </$list>
+	  <$list filter="[all[current]count[]compare:integer:eq[0]]">
+            <$checkbox disabled="yes" class="disabled" field="show.max" checked="all" unchecked=<<maxConfig>> default=<<maxConfig>> > <<lingo ShowAll>> </$checkbox>
+	  </$list>
         </$list>
       </$let>
     </$list>

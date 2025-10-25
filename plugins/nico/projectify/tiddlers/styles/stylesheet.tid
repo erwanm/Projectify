@@ -352,3 +352,7 @@ type: text/vnd.tiddlywiki
   background-color: #EEEEEE;
   color: #555555;
 }
+
+.disabled {
+  color: #999999;
+}

@@ -32,10 +32,7 @@ type: text/vnd.tiddlywiki
      <<lingo From>> <$transclude $variable="pick-a-date" text="date" fieldname="from.date" popuptiddler=<<qualify "$:/temp/projectify/TodoListFilters-pick-a-date-from">>/>
      <<lingo To>> <$transclude $variable="pick-a-date" text="date" fieldname="to.date" popuptiddler=<<qualify "$:/temp/projectify/TodoListFilters-pick-a-date-to">>/>&ensp;&ensp;
 
-      <$transclude $variable="generic-todo-list-rich-filters" startdate={{!!from.date}} enddate={{!!to.date}} minpriority={{!!priority}} targettext={{!!text.query}} callbackproc="todo-list-rich-filters-show-max-control" />
+      <$transclude $variable="generic-todo-list-rich-filters" callbackproc="todo-list-rich-filters-show-max-control" />
 
 </span>
-
-
-
-  </div>
+</div>
