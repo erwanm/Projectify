@@ -6,12 +6,14 @@ type: text/vnd.tiddlywiki
 
 
 \procedure pick-a-date(text fieldname popuptiddler)
-  <$button class="py-btn" popup=<<popuptiddler>>>
-    <$list filter="[all[current]!has<fieldname>]"
-     emptyMessage="""<$view field=<<fieldname>> format="date" template={{$:/language/projectify/DateFormat}}/>""">
-     <<text>>
-    </$list>
-  </$button>
+  <$set name="disableDates" value=<<disableDates>> emptyValue="no" >
+    <$button class="py-btn" popup=<<popuptiddler>> disabled=<<disableDates>> >
+      <$list filter="[all[current]!has<fieldname>]"
+       emptyMessage="""<$view field=<<fieldname>> format="date" template={{$:/language/projectify/DateFormat}}/>""">
+       <<text>>
+      </$list>
+    </$button>
+  </$set>
   <$reveal state=<<popuptiddler>> type="popup" position="belowleft" animate="no">
     <div class="tc-drop-down py-drop-down py-date-picker">
       <$py-date-calendar field=<<fieldname>> />

@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 \define lingo-base() $:/language/projectify/
 
 
-<$vars filtersStateTiddler=<<qualify "$:/state/projectify/UpcomingListFilters">> showProjectLinks="yes">
+<$vars filtersStateTiddler=<<qualify "$:/state/projectify/PastListFilters">> showProjectLinks="yes">
   <$tiddler tiddler=<<filtersStateTiddler>> >
 
     <$let todofilter="tag[done]"
