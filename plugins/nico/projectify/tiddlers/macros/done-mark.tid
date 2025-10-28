@@ -43,7 +43,7 @@ type: text/vnd.tiddlywiki
 
 
 \procedure recurring-get-next-date()
-  <$set name="sdate" filter="[all[current]{$:/config/projectify/NextRecurringBasedOnField}]" emptyValue=<<now "YYYY0MM0DD0hh0mm0ss0XXX">> >
+  <$set name="sdate" filter="[all[current]get{$:/config/projectify/NextRecurringBasedOnField}]" emptyValue=<<now "YYYY0MM0DD0hh0mm0ss0XXX">> >
     <$list filter="[all[current]field:recurring.unit[days]]">
       <$transclude $variable=add-days startdate=<<sdate>> n={{!!recurring.n}}/>
     </$list>
