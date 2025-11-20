@@ -10,16 +10,15 @@ type: text/vnd.tiddlywiki
 
 
 <$vars filtersStateTiddler=<<qualify "$:/state/projectify/UpcomingListFilters">> showProjectLinks="yes">
-  <$tiddler tiddler=<<filtersStateTiddler>> >
 
     <$let todofilter="tag[todo]!tag[done]"
           datefield="due"
           sortfilter="+[sort[due]]"
     >
 
-      <$let fromDate={{!!from.date}} toDate={{!!to.date}} priority={{!!priority}} textQuery={{!!text.query}} > 
 
         <$transclude tiddler="$:/plugins/nico/projectify/ui/forms/TodoListFilters" mode="inline"/>
+      <$let fromDate={{!!from.date}} toDate={{!!to.date}} priority={{!!priority}} textQuery={{!!text.query}} > 
 
         <$list
           filter="[function[py-has-scheduled-todos-in-projects-with-priority-higher-than],<priorityFilter>]"
@@ -33,5 +32,4 @@ type: text/vnd.tiddlywiki
       </$let>
     </$let>
 
-  </$tiddler>
 </$vars>
